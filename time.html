@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>TIME</title>
+  <script src="libs/d3.v4.min.js"></script>
+  <style type="text/css">
+    text{
+        font-family: "Courier"
+    }
+    svg{
+        background: "pink";
+    }
+  </style>
+</head>
+<body>
+  <script type="text/javascript">
+
+    var width=700;
+    var height=700;
+    var leftMargin = 50;
+
+//PART 1 - SIMPLE SET UP
+    var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+//now our SVG is set up
+
+//this is the JSON format of data
+    var dirtyTimeData = [
+        {
+            "date": "2012-09-23",
+            "headline": "Margaret McGarry, Simon Tuchman", 
+            "timestamp": "2012-09-23T00:15:02.002.EDT", 
+            "section": "Fashion & Style", 
+            "word_count": "188", 
+            "blog_post": 0
+        }, 
+        {
+            "date": "2012-09-23",
+            "headline": "Veronica Baugh, Diana Osterfeld", 
+            "timestamp": "2012-09-23T06:15:02.002.EDT", 
+            "section": "Fashion & Style", 
+            "word_count": "126", 
+            "blog_post": 0
+        }, 
+        {
+            "date": "2012-09-23",
+            "headline": "Mai Dinh, Eric Ho", 
+            "timestamp": "2012-09-23T07:15:22.022.EDT", 
+            "section": "Fashion & Style", 
+            "word_count": "213", 
+            "blog_post": 0
+        },
+        {
+            "headline": "A Vexing Flaw in the Subway Is Finally Fixed", 
+            "timestamp": "2012-09-23T08:56:49.049.EDT", 
+            "section": "N.Y. / Region", 
+            "word_count": "899", 
+            "blog_post": 0
+        },
+        {
+            "headline": "Winners of the Thelonious Monk Competition Announced", 
+            "timestamp": "2012-09-23 23:26:19", 
+            "section": "Arts", 
+            "word_count": "375", 
+            "blog_post": 1
+        }
+
+    ]
+
+//PART 1 - Focusing on understanding how to clean up weirdly formatted dates 
+
+// working with dates
+// parse the date / time
+// you can look up all the different models for how to format time and find the one that fits your specific data set
+// https://github.com/d3/d3-time-format/blob/master/README.md#timeParse
+// in this case, we have 
+// "timestamp": "2012-09-23T00:15:02.002.EDT", 
+// YEAR, MONTH, DAY, "T" THEN A FULL TIME RECORDING AND EDT
+// %Y - year with century as a decimal number.
+// %m - month as a decimal number [01,12].
+// %d - zero-padded day of the month as a decimal number [01,31].
+// %X - the locale’s time, such as %-I:%M:%S %p.*
+var xScale;
+var yScale;
+handleTime();
+function handleTime(){
+    var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L.EDT");
+    var parseTimeAlt = d3.timeParse("%Y-%m-%d %H:%M:%S");
+
+    // set the ranges
+    // we want to "map" time from the left to the right of the canvas
+    xScale = d3.scaleLinear().range([leftMargin, width-leftMargin]);
+    // our other value - word count - will be "mapped" in a linear way (not time-based) to the height of the canvas
+    //start at the bottom for the smallest values and go up
+    yScale = d3.scaleLinear().range([height-leftMargin, leftMargin]);
+    
+    // format the data
+    dirtyTimeData.forEach(function(d) {
+        if(d.timestamp.indexOf('T') > -1){
+            d.cleanDate = parseTime(d.timestamp);
+        }else{
+            d.cleanDate = parseTimeAlt(d.timestamp);
+        }
+      d.wordCount = parseInt(d.word_count);
+    });
+
+    // before, we said where the earliest date would go 
+    // but we didn't say WHAT the earliest date is
+    xScale.domain([dirtyTimeData[0].cleanDate, dirtyTimeData[dirtyTimeData.length-1].cleanDate]);
+    yScale.domain([0, d3.max(dirtyTimeData, function(d) { return d.wordCount; })]);
+
+    okDraw();
+}
+function okDraw(){
+      // Add the valueline path.
+      svg.selectAll(".liney")
+            .data(dirtyTimeData)
+            .enter()
+            .append("line")
+            .attr("class", "liney")
+          .attr("x1", function(d,i){
+                if(xScale(d.cleanDate)>0){
+                    return xScale(d.cleanDate)
+                } else{
+                    return 0;
+                }
+            })
+          .attr("x2", function(d,i){
+                if(xScale(d.cleanDate)>0){
+                    return xScale(d.cleanDate)
+                } else{
+                    return 0;
+                }
+            })
+          .attr("y1", height-leftMargin)
+          .attr("y2", function(d,i){
+                return yScale(d.wordCount)
+            })
+          .attr("fill","none")
+          .attr("stroke","grey")
+}
+
+//when we are ready, we can use more data - 
+// var dirtyTimeData;
+// d3.json("data1/smallData.json", function(error, data){
+//     if(error) throw error;
+//     console.log(data);
+//     dirtyTimeData = data;
+//     handleTime();
+// });
+//PART 3 - RADIAL LAYOUT
+svg.on("click", function(){
+    xScale
+        .range([0, 360])
+    yScale.range([10, 100])
+
+    var radius = 100;
+    d3.selectAll(".liney")
+    .attr("transform", function(d){
+        return "translate("+width/2+","+height/2+")"
+    })
+        .transition()
+        .attr("x1", function(d){
+            if(xScale(d.cleanDate)>0){
+                return Math.cos(xScale(d.cleanDate))*radius;
+            } else{
+                return 0;
+            }
+        })
+        .attr("y1", function(d){
+            if(xScale(d.cleanDate)>0){
+                return Math.sin(xScale(d.cleanDate))*radius;
+            } else{
+                return 0;
+            }
+        })
+        //ORDER OF OPERATIONS IS CRUCIAL HERE :)
+        .attr("x2", function(d){
+            if(xScale(d.cleanDate)>0){
+                return Math.cos(xScale(d.cleanDate))*(yScale(d.wordCount)+radius);
+            } else{
+                return 0;
+            }
+        })
+        .attr("y2", function(d){
+            if(xScale(d.cleanDate)>0){
+                return Math.sin(xScale(d.cleanDate))*(yScale(d.wordCount)+radius); 
+            } else{
+                return 0;
+            }
+        })
+})
+
+  </script>
+</body>
+
+</html>

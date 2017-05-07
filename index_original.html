@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Intro to d3 Session!</title>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <style type="text/css">
+    /* Any CSS style rules can go here */
+    .sweetCircle{
+        opacity:.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class='section'>
+    First
+  </div>
+  <div class='section'>
+    Second
+  </div>
+
+  <!-- <div id = "hey">
+</div> -->
+  <script type="text/javascript">
+
+
+    // d3.select('.section')
+    //     .text('D3 was here');
+
+
+
+    // d3.selectAll('.section')
+    //     .text('D3 was here');
+    //THIRD svg elements
+//     var myFirstWord = "all ideas are stupid";
+//     var width=500;
+//     var height=700;
+//     var circleRadius=200;
+//     var oneNumber = 6;
+//         // Your beautiful D3 code will go here
+//         // Create SVG element
+
+// var brainArray = ["kill your darlings","listen","all ideas are bad"]
+
+//     var svg = d3.select("body")
+//                 .append("svg")
+//                 .attr("width", width)
+//                 .attr("height", height);
+    // svg
+    //     .append("circle")
+    //     .attr("cx", width/2) 
+    //     .attr("cy", height/2)
+    //     .attr("class","sweetCircle")
+    //     .attr("r", circleRadius/2)
+    //     .attr("fill", "purple");
+    //     // .attr("opacity", .5);
+    // svg
+    //     .append("circle")
+    //     .attr("class","sweetCircle")
+    //     .attr("cx", 50) 
+    //     .attr("cy", 50)
+    //     .attr("r", 60)
+    //     .attr("fill", "purple")
+    //     // .attr("opacity", .5);
+    // svg
+    //     .append("circle")
+    //     .attr("class","sweetCircle")
+
+    //     .attr("cx", 60) 
+    //     .attr("cy", 50)
+    //     .attr("r", 10)
+    //     .attr("fill", "purple")
+
+            // .attr("opacity", .1);
+    //FOURTH: data and svg elements
+var brainArray = ["kill your darlings","listen","all ideas are bad"]
+
+    var width=500;
+    var height=700;
+    var leftMargin = 50;
+
+    var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+    svg
+        .selectAll("circle")
+        .data(brainArray)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d,i){ 
+            console.log(d+"believe me");
+            return leftMargin+i*40; 
+        }) 
+        .attr("class", function(d){
+            return d;
+        })
+        .attr("cy", 50)
+        .attr("r", function(d){
+            return d.length; 
+        })
+        .attr("fill", "aquamarine")
+        // .attr("opacity", 1);
+    //FIFTH: css classes
+    // var width=500;
+    // var height=700;
+    // var leftMargin = 50;
+    // var circleRadius=[30,20,10,1,5,1];
+    //     // Your beautiful D3 code will go here
+    //     //Create SVG element
+    //     var svg = d3.select("body")
+    //                 .append("svg")
+    //                 .attr("width", width)
+    //                 .attr("height", height);
+    //     svg
+    //         .selectAll("circle")
+    //         .data(coffeeData)
+    //         .enter()
+    //         .append("circle")
+    //         .attr("cx", function(d,i){ return leftMargin+i*40; }) 
+    //         .attr("cy", 50)
+    //         .attr("r", function(d){return d; })
+    //         .attr("fill", "purple")
+    //         .attr("opacity", .1);
+    //     svg
+    //         .selectAll(".heycookies")
+    //         .data(coffeeData)
+    //         .enter()
+    //         .append("text")
+    //         .attr("class","heycookies")
+    //         // //GOTCHA
+    //         .attr("x", function(d,i){ return leftMargin+i*40; }) 
+    //         .attr("y",50)
+    //         .text(function(d,i){ 
+    //             return i; 
+    //         })
+    //         .style("fill","black")
+    //SIXTH: scales + dynamic placement!
+    // var width = 1000;
+    // var height = 500;
+    // var leftMargin = 50;
+    // // var circleRadius=[30,70,50,35,50,45,10,80,40,30,20,65];
+    // var circleRadius = [30, 20, 10, 1, 5, 15, 1];
+    // var mapCircleX = d3.scale.linear()
+    //   .domain([0, circleRadius.length])
+    //   .range([leftMargin, width - leftMargin]);
+    // var maxRadius = d3.max(circleRadius, function(d, i) {
+    //   return d;
+    // });
+    // var mapCircleY = d3.scale.linear()
+    //   .domain([0, maxRadius])
+    //   .range([height / 2, 0]);
+    // // Your beautiful D3 code will go here
+    // //Create SVG element
+    // var svg = d3.select("body")
+    //   .append("svg")
+    //   .attr("width", width)
+    //   .attr("height", height);
+    // svg
+    //   .selectAll("rect")
+    //   .data(d3.range(100))
+    //   .enter()
+    //   .append("rect")
+    //   .attr("x", function(d, i) {
+    //     return width / 6;
+    //     // return mapCircleX(i);
+    //     // return leftMargin+i*40; 
+    //   })
+    //   .attr("y", function(d) {
+    //     return height / 6;
+    //     // return mapCircleY(d); 
+    //   })
+    //   .attr("width", function(d) {
+    //     return d * 5;
+    //   })
+    //   .attr("height", function(d) {
+    //     return d * 5;
+    //   })
+    //   .attr("fill", "none")
+    //   .attr("stroke", "black")
+    //   // .attr("opacity", .1)
+    //   .attr("dataId", "population");
+    // svg
+    //     .selectAll("circle")
+    //     .data(circleRadius)
+    //     .enter()
+    //     .append("circle")
+    //     .attr("cx", function(d,i){
+    //     // return width/2; 
+    //         return mapCircleX(i);
+    //         // return leftMargin+i*40; 
+    //     }) 
+    //     .attr("cy", function(d){ 
+    //         // return height/4;
+    //         return mapCircleY(d); 
+    //     })
+    //     .attr("r", function(d){return d; })
+    //     .attr("fill", "blue")
+    //     .attr("opacity", .1)
+    //     .attr("dataId","population");
+    // svg
+    //     .selectAll("text")
+    //     // .data(circleRadius)
+    //     // .enter()
+    //     .append("text")
+    //     .attr("x", 
+    //         // function(d,i){
+    //      width/2+maxRadius) 
+    //     //
+    //         // return mapCircleX(i);
+    //         // return leftMargin+i*40; 
+    //     // }) 
+    //     .attr("y", function(d){ 
+    //         return height/4;
+    //         // return mapCircleY(d); 
+    //     })
+    //     .text(maxRadius)
+    //FIRST COMMENT BELOW 2 LINES IN d3+html
+    // d3.select('.section')
+    //     .text(maxRadius);
+  </script>
+</body>
+
+</html>

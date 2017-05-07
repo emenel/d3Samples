@@ -1,0 +1,97 @@
+<!-- standard headers to identify the page on the web -->
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>This is the title of the tab</title>
+<!-- standard headers to identify the page on the web -->
+
+<!-- 
+we are pulling in the local file for the d3 library. it is inside the libs folder and is a javascript file type. 
+we are using the v4 of d3 - this is the latest developed version with all the best revisions. still, as with any versioning system (think of your iPhone and all the apps in various updated versions - sometimes we will have to do some double-checking on things that we used to be able to do in the previous version)
+- that's all noted here: https://github.com/d3/d3/blob/master/CHANGES.md
+the "min" part of the file name just means that the file has been reduced to its most compact version - this will load faster than a version with lots of white space, comments and spaces
+-->
+	<script type="text/javascript" src="libs/d3.v4.min.js"></script>
+</head>
+
+<!-- we can put css here or in a separate file. best practice is to put it in a separate file but in this case we are being lazy. -->
+<style type="text/css">
+	/*some elements of your page are always recognizable by html, like svg or body or headers*/
+	svg{ 
+		background-color: "black";
+	}
+/*	if you want to style other elements using css, you have to specifically mark them as belonging to a class (for multiple elements - lots of blueberries!) or an ID (for unique elements - just one super special spot)*/
+	.labels{
+		font: Gotham;
+		size: 10pt;
+	}
+/*as you start working on your project, you will notice that some aspects are more easily done in HTML / CSS styling and some aspects need to be done directly in d3.js.*/
+	#container{
+		width:100%;
+		height:100%;
+	}
+</style>
+<!-- any html elements and javascript action needs to happen inside the body -->
+<!-- you can / should eventually make your css and javascript files separate from this main index file -->
+<!-- reminder: 
+html provides the basic skeleton for your page
+css is the way you style your page - think fonts, positioning, sizing of elements as well as shifts between various mouse states / hovers
+javascript is the way you give your page life and computation -->
+<body>
+
+<!-- here we are putting one empty vizContainer -->
+<div id = "vizContainer"></div>
+<!-- later in our javascript, we will selected it by its unique name - #vizContainer - and add our canvas and visualisation elements to it -->
+
+<script type="text/javascript">
+// D3 code will go here
+
+// -----------PART 1: BRINGING IN THE DATA-----------
+
+//this data is formatted in a tsv (tab separated values) so we use the d3.tsv function to bring it in
+//if it were a csv file we would use d3.csv, etc
+//this is all in the d3 reference
+//reminder: this is a function, so anything we do in here is only seen by anything inside of here :)
+d3.tsv("bigPic/Designs-Table 1 copy.tsv", function(myData){ 
+	console.log(myData); //let's find out - what does this data look like when we bring it?
+//go to view -> developer -> javascript console
+//you will see a lot of "objects" 
+//if you click the carrot, you will see a list of objects
+//this has each one of your data entries
+
+//so if we just want to access the first entry in the data, what do we do?	
+	console.log(myData[0]); //how could we get inside of one entry?
+//see that it shows up and on the right side of the log, you see from which line this item is coming? 
+
+
+//what if we want to access the year for this first piece of data? 
+	console.log(myData[0]["Award year"]);
+//can you access a different kind of data about the first piece of data?
+
+
+//what if we want to save just this piece of data?
+	var oneYear = myData[0]["Award year"];
+//will this be accessible to the other parts of the script? (no, so... it needs to be a global variable - existing outside of a function)
+}) //end of function that brings in our dataset as "my data"
+
+
+
+// -----------PART 2: SETTING UP THE CANVAS-----------
+//we declare that we will have a special variable named svgCanvas - or whatever we want to call it, where we will attach the canvas
+var svgCanvas;
+//ok, now we actually select the part of the html document where we would like this canvas to be attached to
+svgCanvas = d3.select("#vizContainer").append("svg") //specifically, we are appending an svg to the vizContainer - a unique div we made in the html
+		.attr("width", 800) //we decide how wide the canvas is 
+		.attr("height", 600); //we decide how tall the canvas is 
+//a note on semicolons: in d3.js, a semi-colon indicates that  you are done creating this element
+
+
+
+// -----------PART 3: DRAWING ON THE CANVAS-----------
+
+
+
+	</script>
+</body>
+</html>

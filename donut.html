@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>DONUT - PIE</title>
+  <script src="libs/d3.v4.min.js"></script>
+  <style type="text/css">
+    text{
+        font-family: "Courier"
+    }
+  </style>
+</head>
+<body>
+  <script type="text/javascript">
+
+    var width=1200;
+    var height=700;
+    var leftMargin = 50;
+
+//PART 1 - SIMPLE SET UP
+    var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+//now our SVG is set up
+
+//here we will prepare the variables to draw the arcs
+    var color = ["#3F51B5","#607D8B","#7986CB"];
+
+    var radius = height/4;
+    var outerRadius = radius;
+    var innerRadius = radius-20;
+
+    var pie = d3.pie()
+        .sort(null);
+    var arcOne = d3.arc()
+        .innerRadius(innerRadius) //try making this bigger / smaller and see what happens
+        .outerRadius(outerRadius); //remember - the semicolon comes after you have finished defining the piece of code or shape
+    var labelr = radius/1.7 + 23; 
+//done with variables preparation
+//let's make up some data that is about part of a whole - the kind of data that makes sense to use in these types of visualisations
+
+    var phaseArray = [2, 6, 9];
+
+//here we are drawing the pie
+    var pathPie = svg.selectAll("pie")
+        .data(pie(phaseArray))
+        .enter().append("path")
+        .attr("fill", function(d, i) { 
+            return color[i]; 
+        })
+        .attr("d", arcOne); 
+//all we need to make the arcs!
+
+//now let's set up our labeling
+    var sliceLabel = svg.selectAll("text")
+        .data(pie(phaseArray))
+
+    sliceLabel.enter().append("svg:text")
+        .attr("class", "arcLabel")
+        .attr("transform", function(d) {
+            var c = arcOne.centroid(d),
+                x = c[0],
+                y = c[1],
+                // pythagorean theorem for hypotenuse
+                h = Math.sqrt(x*x + y*y);
+            return "translate(" + (x/h * labelr) +  ',' +
+               (y/h * labelr) +  ")"; 
+        })
+        .attr("dy", 20) //this is an example - to show that you can manipulate the positioning of the text
+        .attr("text-anchor", "middle")
+        .text(function(d, i) { 
+            //there is a better way to do this :)
+            if(i==0){
+                return "Plan"
+            }
+            if(i==1){
+                return "Document"
+            }
+            if(i==2){
+                return "Reflect"
+            }
+        })
+
+
+
+
+
+
+
+
+//// PART 2 - 
+//// CAN WE IMPROVE THE POSITIONING? 
+//// CAN WE IMPROVE THE TEXT-LABELING?
+//// HINT - TRY TO RE-POSITION THE CANVAS YOU ARE DRAWING ON...     
+////  
+//     var data = [
+//         {
+//             "name": "Plan",
+//             "val": 4
+//         }, 
+//         {
+//             "name": "Document",
+//             "val": 6
+//         }, 
+//         {
+//             "name": "Reflect",
+//             "val": 9
+//         }
+//     ];
+
+//     var arcs = d3.pie()
+//         .sort(null)
+//         .value(function(d) { return d.val; })
+//         (data)
+
+//     var arc = d3.arc()
+//         .outerRadius(outerRadius)
+//         .innerRadius(innerRadius)
+//         .padAngle(0.03)
+//         .cornerRadius(8)
+            
+//     var pieG = svg.selectAll("g")
+//         .data([data])
+//         .enter()
+//         .append("g")
+//         .attr("transform", "translate("+[width/2, height/2]+")")
+        
+//     var block = pieG.selectAll(".arc")
+//         .data(arcs)
+            
+//     var newBlock = block.enter().append("g").classed("arc", true)
+            
+//     newBlock.append("path")
+//         .attr("d", arc)
+//         .attr("id", function(d, i) { return "arc-" + i })
+// //LET'S PUT RANDOM COLORS IN THERE 
+//         .attr("fill", function(d,i){ return d3.interpolateCool(Math.random()) })
+// //METHOD 1 FOR APPENDING TEXT
+//     newBlock.append("text")
+//         .attr("dx", 55)
+//         .attr("dy", -5)
+//         .append("textPath")
+//         .attr("class","textLabelMethod1")
+//         .attr("xlink:href", function(d, i) { return "#arc-" + i; })
+//         .text(function(d) { 
+//             return d.data.name 
+//         })
+// //METHOD 2 FOR APPENDING TEXT
+//     var labelArc = d3.arc()
+//         .outerRadius(outerRadius - 40)
+//         .innerRadius(innerRadius - 40);
+//     newBlock.append("text")
+//         .attr("class","textLabelMethod2")
+//         .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+//         .attr("dy", ".35em")
+//         .text(function(d) { 
+//             return d.data.name 
+//         })
+
+  </script>
+</body>
+
+</html>

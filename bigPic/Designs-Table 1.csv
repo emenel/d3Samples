@@ -1,0 +1,449 @@
+ID;Name;Category ID;Challenge ID;Driver of Change;Award year;Is Winner? (1 | 0);Country of Design
+1;‘c’ system;1;3;;2005;0;UK
+2;$100 Laptop;4;19;;2005;0;USA
+3;60 degrees Subway Overhead Support Handle;5;30;;2005;0;Taiwan
+4;A Strategy: Moving America Away from Oil;5;25;;2005;0;USA
+5;Agrobot;5;26;;2005;0;Denmark
+6;AIGA Design for Democracy;5;28;;2005;0;USA
+7;Airman;4;21;;2005;0;Denmark
+8;AMUN ;2;11;;2005;0;Germany
+9;Apligraf® Living Skin;1;3;;2005;0;USA
+10;APPLE iTunes, iPod;4;19;;2005;1;USA
+11;ApproTEC;2;9;;2005;0;USA
+12;ARCHITECTURE FOR HUMANITY;5;29;;2005;1;USA
+13;Artificial Heart;1;3;;2005;0;Japan
+14;AXIOM Range of playground products;4;21;;2005;0;Finland
+15;AXN 300 & AXN 500 outdoor computers;4;21;;2005;0;Finland
+16;Bio Rubber;1;3;;2005;0;USA
+17;Bios Urn;5;26;;2005;0;Spain
+18;BIX;5;29;;2005;0;Germany
+19;Bluetooth;3;3;;2005;0;Sweden
+20;Boase;2;7;;2005;0;Denmark
+21;Circles of Care;1;3;;2005;0;Italy
+22;Claystation;4;21;;2005;0;UK
+23;ClearRx system;1;3;;2005;0;USA
+24;Combined City Vehicle (CCV);1;3;;2005;0;Poland
+25;Copenhagen Habour Bath;5;29;;2005;0;Denmark
+26;Corsinel;1;3;;2005;0;Denmark
+27;Create! Don’t Hate;5;24;;2005;0;USA
+28;DiamondHelp;2;2;;2005;0;USA
+29;DIANE;1;5;;2005;0;USA
+30;drowning.defender;1;5;;2005;0;Singapore
+31;DYSON Vacuum Cleaner;2;8;;2005;0;UK
+32;E-BAY;5;29;;2005;0;USA
+33;Eifelland DESEO;4;21;;2005;0;Germany
+34;Electric powered vehicle;5;30;;2005;0;Hungary
+35;Fab Tree Hab;5;29;;2005;0;USA
+36;Fiskars Universal Convenience Cutter;3;17;;2005;0;Finland
+37;Flexor- active wheelchair prototype;1;3;;2005;0;Hungary
+38;Ford Plant Green Roof;5;29;;2005;0;USA
+39;Google;5;29;;2005;0;USA
+40;GRID;4;21;;2005;0;Denmark
+41;Grippa;5;32;;2005;0;UK
+42;Guaraná Power;3;17;;2005;0;Denmark
+43;Harvester Heat;2;11;;2005;0;Norway
+44;HealthNet;1;3;;2005;0;USA
+45;Hippo Roller;2;9;;2005;0;South Africa
+46;Home Tanker 100L;2;9;;2005;0;Japan
+47;Håg Swing;3;17;;2005;0;Norway
+48;iBOT™ Mobility System;1;3;;2005;0;USA
+49;iMac G5;3;3;;2005;0;USA
+50;InterPlay;4;19;;2005;0;USA
+51;iPlus 2G3G with WiFi;5;29;;2005;0;UK
+52;Karrysafe bags and accessories;1;5;;2005;0;UK
+53;Kinkajou Portable Library and Projector;4;20;;2005;0;USA
+54;Kurumono Kitchen;2;7;;2005;0;USA
+55;LIFESTRAW;2;9;;2005;1;Denmark
+56;LINUX;5;29;;2005;0;USA
+57;MAGNETUDE;4;21;;2005;0;France
+58;Material Explorer – Material Selection Support Tool for Designers;3;3;;2005;0;Netherlands
+59;MICUS stretcher;1;3;;2005;0;Sweden
+60;Mobile.Seed;5;26;;2005;0;Italy
+61;Moon;2;8;;2005;0;Germany
+62;Museu da Casa Brasileira;4;20;;2005;0;Brazil
+63;ÑANDEVA ;4;20;;2005;0;Italy
+64;NCC Concept House ;2;11;;2005;0;Sweden
+65;Neotopia ;4;20;;2005;0;Switzerland
+66;NurseBot;3;3;;2005;0;USA
+67;OBSERVATORIO IBEROAMERICANO;4;20;;2005;1;Spain
+68;ORBIS;1;3;;2005;0;USA
+69;OUTREACH;5;29;;2005;0;Denmark
+70;paraSITE;2;7;;2005;0;USA
+71;Personal Water Cleaner OPV;2;9;;2005;0;Croatia
+72;Power Mac 5;4;19;;2005;0;USA
+73;Project Fox;5;31;;2005;0;Denmark
+74;Project Infusion;3;16;;2005;0;USA
+75;Rescuerunner;3;17;;2005;0;Sweden
+76;RIQUADRO;4;19;;2005;0;Italy
+77;Round Zone Container;2;8;;2005;0;Finland
+78;Sandbug and Gofer;3;17;;2005;0;UK
+79;ScooterDesk;3;17;;2005;0;Belgium
+80;SIM Carpet Simulation;5;26;;2005;0;UK
+81;Simple Toilet-Emergency Sanitation;1;3;;2005;0;Slovenia
+82;SimplyCity;5;29;;2005;0;Belgium
+83;SitBag;4;21;;2005;0;Denmark
+84;Skype;5;31;;2005;0;Netherlands
+85;Snail Housetrap;2;8;;2005;0;Chile
+86;Socialcommercialism;5;26;;2005;0;Sweden
+87;SOFTWALL;2;8;;2005;1;Canada
+88;Solar pasteurisation unit;2;9;;2005;0;Denmark
+89;Solar Surgery Light;3;17;;2005;0;Denmark
+90;SpaceShipOne;5;30;;2005;0;USA
+91;SpeediCath Compact;1;3;;2005;0;Denmark
+92;SQFlex;2;9;;2005;0;Denmark
+93;Sun Shelter Pavilion;2;7;;2005;0;USA
+94;Syopa ;5;31;;2005;0;Finland
+95;Tank Park;4;21;;2005;0;Norway
+96;Tennis racket pick-up ball accessory;4;21;;2005;0;Slovenia
+97;The ‘RAM-Exchange';3;14;;2005;0;Venezuela
+98;The “SOS” Infant Nursing Packs;1;3;;2005;0;Denmark
+99;The EcoSource project;5;26;;2005;0;India
+100;The Evolutionary Housing System;2;7;;2005;0;USA
+101;The Helping Hand, IDAS I;1;3;;2005;0;Denmark
+102;The Lifeport Kidney Transporter;1;3;;2005;0;USA
+103;the vOICe;1;3;;2005;0;Netherlands
+104;Toyota Prius;5;30;;2005;0;Japan
+105;Trijak ;4;21;;2005;0;Sweden
+106;trioBike;5;30;;2005;0;Denmark
+107;Turbo Stove;2;13;;2005;0;Finland
+108;Unplugged – Mobilizing Power;5;25;;2005;0;Denmark
+109;Vivid-i;1;3;;2005;0;France
+110;WIKI Software: Beyond Blogs;5;31;;2005;0;Sweden
+111;Wovin Wall System;2;8;;2005;0;Australia
+112;Xtreme West;4;21;;2005;0;Croatia
+113;Zip-Shelter;2;7;;2005;0;Germany
+114;6LOCKERS;2;7;;2007;0;Ireland
+115;A BRIDGE 2 FAR;5;29;;2007;0;China
+116;AIRWASH;2;8;;2007;0;Singapore
+117;ANYBODY MODELLING SYSTEM;3;3;;2007;0;Denmark
+118;AQUARIUS Keyboard;3;3;;2007;0;Italy
+119;BASF HEAT Concepts;2;13;;2007;0;Germany
+120;BCK SOLAR COOKER;2;8;;2007;0;Argentina
+121;BLACKENED CIGARETTES;1;3;;2007;0;China
+122;BLUETOOTH HANDS FREE CAR KIT;5;32;;2007;0;China
+123;C-CAP;1;3;;2007;0;Denmark
+124;CAROMA;2;10;;2007;0;Australia
+125;CASSETTE 3IN1;3;17;;2007;0;Australia
+126;CATERPILLAR SCOOP;5;30;;2007;0;Sweden
+127;CHANGING LIVES;4;20;;2007;0;UK
+128;CITY CAB;5;30;;2007;0;Finland
+129;COLLECTION NÈOVI;1;4;;2007;0;France
+130;CONCRETE CANVAS SHELTER;2;7;;2007;0;UK
+131;CONGO RIVER MALARIA HEALTHCARE SYSTEM (USA);1;5;;2007;0;USA
+132;COVER;2;8;;2007;0;Belgium
+133;DAILY DUMP;2;8;;2007;0;India
+134;DIABET-COOL;1;3;;2007;0;Denmark
+135;DONGTAN ECO-CITY;5;26;;2007;0;UK
+136;DROPPING KNOWLEDGE;5;31;;2007;0;Germany
+137;ECOLOGICAL FOOTPRINT;5;25;;2007;0;USA
+138;EMPTICON;3;17;;2007;0;Denmark
+139;ESCAPE FROM DIAB;4;20;;2007;0;USA
+140;FREE GO;2;8;;2007;0;Italy
+141;FREEDOM OF CREATION;3;3;;2007;0;Netherlands
+142;GRUNDFOS NONOX DOSING SYSTEM;5;26;;2007;0;Denmark
+143;GUBI CHAIR II COLLECTION;2;7;;2007;0;Denmark
+144;HALLEY VI;2;8;;2007;0;UK
+145;HEALING;4;20;;2007;0;Germany
+146;HYDRO WALL;2;8;;2007;0;USA
+147;HYPO HOIST;1;5;;2007;0;UK
+148;I FLASHER;5;32;;2007;0;Denmark
+149;IMPRINT;2;8;;2007;0;Denmark
+150;IMPROVED HELMET TECHNOLOGY (IHT);1;5;;2007;0;USA
+151;INKWELL SPARK COMPUTING DEVICE;4;20;;2007;0;USA
+152;INSULET OMNIPOD DIABETES MANAGEMENT;1;3;;2007;0;USA
+153;INTERNET TERMINAL FOR AFRICA;5;24;;2007;0;Denmark
+154;iUVO;1;3;;2007;0;Denmark
+155;JACK;2;13;;2007;0;Germany
+156;JOYN;3;17;;2007;0;France
+157;KAOSPILOTS INTERNATIONAL;4;20;;2007;0;Denmark
+158;KEEP THE CHANGE;3;14;;2007;0;USA
+159;KIKKERLAND;4;20;;2007;0;Italy
+160;KVADRAT SOFT CELLS;3;17;;2007;0;Denmark
+161;LEGO MINDSTORMS NXT;4;20;;2007;0;Denmark
+162;MANY HELPING HANDS APPROACH;5;24;;2007;0;Singapore
+163;MAT ( MECHANICAL ADVANTAGE TOURNIQUET);1;5;;2007;0;USA
+164;MEDICINUS;1;5;;2007;0;Denmark
+165;MOBILITY FOR EACH ONE;1;3;;2007;1;Canada
+166;MOUNTIT;3;17;;2007;0;Denmark
+167;MOUSE CAP;3;17;;2007;0;Argentina
+168;MUKANA;5;24;;2007;0;Finland
+169;MYGO;5;24;;2007;0;Germany
+170;NEPTUNIC C SUIT;3;17;;2007;0;USA
+171;OLPC XO;5;24;;2007;1;USA
+172;OPTALERT;5;32;;2007;0;Australia
+173;ORDRUP SCHOOL;4;20;;2007;0;Denmark
+174;OTICON DELTA;1;3;;2007;0;Denmark
+175;PACKAGING AND IDENTITY FOR PANGEA ORGANICS;5;26;;2007;0;USA
+176;PERSONAL ALARM TRANSMITTER;1;5;;2007;0;Denmark
+177;PLAY.orchestra;4;21;;2007;0;UK
+178;POLICY DESIGN BY CITIZENS;5;28;;2007;0;Denmark
+179;POWERPLANTS AND POWERSEEDS;5;25;;2007;0;USA
+180;PROGRESSIVE SHELTER SYSTEM;2;7;;2007;0;Guatemala
+181;PUMA BIKE;5;30;;2007;0;Denmark
+182;RAMPSNAKE;3;17;;2007;0;Denmark
+183;RAVELIN 3;3;17;;2007;0;Norway
+184;RESI;3;17;;2007;0;Finland
+185;SAFER PARAFFIN DISTRIBUTION SYSTEM;2;13;;2007;0;South Africa
+186;SAHEL;5;24;;2007;0;Italy
+187;SAM (Sound Activity Meter);1;3;;2007;0;Denmark
+188;SECOND LIFE;4;20;;2007;0;USA
+189;SEPERATE;5;26;;2007;0;USA
+190;SHARER;2;8;;2007;0;Italy
+191;SHELTER ORIGAMI;2;7;;2007;0;Brazil
+192;SMARTUS;4;21;;2007;0;Finland
+193;SOLAR BOTTLE;2;9;;2007;1;Italy
+194;SOLAR STREET CONCEPT;5;25;;2007;0;Japan
+195;SOLARSCAN;1;3;;2007;0;Australia
+196;SPACESAFE;2;7;;2007;0;Denmark
+197;SPACESAVER;2;8;;2007;0;Romania
+198;STENOP;1;3;;2007;0;Spain
+199;STERILE DISPOSABLE WASH BASIN;3;17;;2007;0;Denmark
+200;STICKSAFE;3;17;;2007;0;UK
+201;STREET CAR;5;30;;2007;0;UK
+202;SUSTAINABLE PRODUCTS;2;8;;2007;0;Sweden
+203;SUTWELL;1;3;;2007;0;Denmark
+204;SYNC-Q TEAMPLAYGROUND;4;21;;2007;0;Switzerland
+205;TESLA ROADSTER;4;21;;2007;1;USA
+206;TOGINON KNIVES;2;8;;2007;0;UK
+207;TONGUE SUCKER;1;3;;2007;1;UK
+208;TRACKLESS;5;26;;2007;0;Italy
+209;TYPE 1 TOOLS;4;20;;2007;0;USA
+210;UNICEFFRIEND;5;31;;2007;0;USA
+211;UNIFORM JACKET FOR THE DANISH POLICE;3;17;;2007;0;Denmark
+212;UTURN;1;3;;2007;0;Denmark
+213;VISUAL COMMUNICATION;5;31;;2007;0;Brazil
+214;WHIRLWIND ROUGHRIDER;5;30;;2007;0;USA
+215;WING;2;11;;2007;0;Croatia
+216;WIRELESS LED LAMP;2;11;;2007;0;Hungary
+217;YELLOWONE NEEDLE CAP;1;3;;2007;1;Denmark
+218;¡GuateAmala!;5;28;13, 14, 17, 18, ;2009;0;USA
+219;(RED)WIRE;5;31;18, 28;2009;0;USA
+220;3B CART IN THE RAMPMATE SYSTEM;5;29;2, 6, 13;2009;0;Denmark
+221;6.40mm;5;26;4, 11, 12, 13;2009;0;Korea, Republic of
+222;ALLUVIAL SPONGE COMB;5;32;4, 11;2009;0;USA
+223;ALZHEIMER100;1;3;1, 28;2009;0;UK
+224;ARIVI PARAFFIN STOVE;2;8;4;2009;0;UK
+225;BAMBULANCE PROJECT;5;30;11, 15;2009;0;South Africa
+226;BETTER PLACE;5;29;4, 11, 21, 25;2009;1;Denmark
+227;CABBAGE CHAIR;2;8;;2009;0;Japan
+228;CHILDBIRTH ASSISTANCE OUTSIDE HOSPITALS;1;3;11, 15,  18;2009;0;Mexico
+229;CHULHA;2;8;4, 11, 15, 21;2009;1;Netherlands
+230;CITY INVADER;4;21;;2009;0;Korea, Republic of
+231;CREATIVE PITCH;4;20;18, 21;2009;0;USA
+232;DESIGN INDABA 10×10 LOW COST HOUSING PROJECT;2;7;11, 15, 20, 21;2009;0;South Africa
+233;DISPOSABLE MUG;2;8;11, 15, 19, 20,  ;2009;0;India
+234;DRIVERS OF CHANGE;4;20;4, 11, ;2009;0;Global
+235;E-CHARKHA;3;17;11, 15, 21, 24;2009;0;India
+236;ECODRAIN™;2;9;4, 11, ;2009;0;Canada
+237;FREEPLAY FETAL HEART RATE MONITOR;1;3;5, 11, 13, 15;2009;1;UK
+238;GREEN BUILDING PRODUCTS FROM FLYASH;5;26;4, 11, 21;2009;0;USA
+239;HOME PHOTOTHERAPY;1;3;11;2009;0;Iran
+240;i-LIMB HAND;1;3;3, 11;2009;0;UK
+241;INVERSAbrane;5;32;4, 8, 11, 13, 15, 21;2009;0;USA
+242;KIVA;3;14;13, 15 18, 20, 22;2009;1;USA
+243;LODOX® STATSCAN® VE1;3;17;11;2009;0;South Africa
+244;LUNAR-RESONANT STREETLIGHTS;5;25;4, 11, 13, 21, ;2009;0;USA
+245;MAGNO;4;21;4, 11;2009;0;Indonesia
+246;MALARIA MUST GO;2;13;11;2009;0;UK
+247;MEDILABEL SAFETY SYSTEM©;5;32;1, 11;2009;0;Denmark
+248;MOR-POWER;5;25;6, 11, 13 ,15, 25;2009;0;Hong Kong
+249;OPEN GREEN MAP;5;31;4, 6, 9, 11, 13;2009;0;USA
+250;OTICON STREAMER;1;3;1, 6, 9, 11;2009;0;Denmark
+251;PATHFINDER;1;5;6, 9, 11;2009;0;UK
+252;PEACEMAKER;4;20;5, 11, 18, 26;2009;0;USA
+253;PENGUIN ARMY;5;31;4, 7, 28;2009;0;Denmark
+254;PHILIPS SMILE;2;11;13, 15, 20, 25;2009;0;Netherlands
+255;PIG 05049;4;20;13;2009;1;Netherlands
+256;PILL TIME;1;5;1, 11;2009;0;USA
+257;PINK PROJECT;2;7;7, 28;2009;0;USA
+258;PLANET EARTH-Directions for use;5;31;4, 13;2009;0;Austria
+259;PORTABLE LIGHT;2;11;11, 13, 15, 20, 25;2009;0;USA
+260;PROJECT MASILULEKE;1;3;6, 7, 11, 13;2009;0;USA
+261;RECYCLE FACTORY;4;20;4, 11;2009;0;China
+262;REDSENSE;1;3;11;2009;0;Denmark
+263;RESUSCITATING THE FEZ RIVER;5;29;11, 21;2009;0;Morocco
+264;S-HOUSE;2;8;;2009;0;Austria
+265;SHOWERMINDER;2;9;;2009;0;USA
+266;SIZECHINA;5;24;;2009;0;China
+267;SMART SHELTER FOUNDATION;2;7;;2009;0;Netherlands
+268;SOLAR WATER PLANT;2;9;;2009;0;Denmark
+269;SOLID STATE PLASMA LIGHT;2;11;;2009;0;USA
+270;STREET SWAGS;2;7;;2009;1;Australia
+271;TAGTYPE;4;19;;2009;0;Japan
+272;THE $700 HOUSE;2;7;;2009;0;Germany
+273;THE GOOD KITCHEN;1;1;;2009;0;Denmark
+274;THE STORY OF STUFF;5;31;;2009;0;USA
+275;TOUCH SIGHT;1;3;;2009;0;Korea, Republic of
+276;UNIVERSAL GENERATOR;5;25;;2009;0;UK
+277;VOICE LABELER;4;19;;2009;0;Korea, Republic of
+278;VOICE STICK;2;2;;2009;0;South Korea
+279;WALLBREAKERS;4;20;;2009;0;Denmark
+280;WASTE RECOVERING SYSTEM;5;26;;2009;0;Mexico
+281;WATER FOR ALL;2;9;;2009;0;Germany
+282;WHALEPOWER TUBERCLE TECHNOLOGY;2;11;;2009;0;USA
+283;WOOLWORTHS “Making the Difference Through Design” Program;4;20;;2009;0;South Africa
+284;X STING WISH;2;13;;2009;0;UK
+285;X-SYSTEM;1;3;;2009;0;USA
+286;YELLO STROM;5;25;;2009;0;Germany
+287;21st Century Nursing Bag;3;17;11;2011;0;United Kingdom
+288;Adlens Universal and the Vision for a Nation Programme;1;3;11, 15, 18;2011;0;Hong Kong and UK
+289;Ambulight Photodynamic Therapy (PDT);1;3;11, 16;2011;0;UK
+290;Anti Sleep Pilot;5;32;6, 9, 11, 16;2011;0;Denmark
+291;Aquacube™;2;9;4, 5, 10, 11, 13, 16;2011;0;UK
+292;AskNature Biomimicry Website;2;8;4, 9, 11, 13;2011;0;USA
+293;Autarchy;2;8;4, 11;2011;0;Italy
+294;Autodesk Sustainability Workshop;4;20;4, 6, 9, 11, 13;2011;0;USA
+295;BioLite Home Stove;2;13;4, 11, 13, 15;2011;0;USA
+296;Business Model Generation;4;20;6, 11, 13, 22;2011;0;Switzerland, USA, Netherlands and UK
+297;Bware water meter;2;9;4, 9, 10, 11;2011;0;Israel
+298;DESIGN FOR CHANGE;3;17;11, 13;2011;1;India
+299;DESIGN SEOUL;5;29;4, 6, 21;2011;1;Korea, Republic of
+300;E. chromi;1;3;3, 11;2011;0;UK
+301;Earthquake Disaster + design;5;32;11, 13, 21;2011;0;Japan
+302;Easy Latrine;2;8;11, 13, 15, 18;2011;0;USA and France
+303;Eating, Design & Dementia;1;3;1, 11, 13;2011;0;Ireland
+304;Edheads.org;4;20;4, 9, 11, 13 ;2011;0;USA
+305;ELEMENTAL MONTERREY;2;7;11, 13, 15;2011;1;Chile
+306;EMBRACE INFANT WARMER;1;3;11, 13, 15;2011;1;USA and India
+307;Enviromesh;2;7;4, 11, 21;2011;0;Australia
+308;Glow Guardian;5;32;11;2011;0;Iran
+309;Green School;4;20;4, 13;2011;0;USA and Canada
+310;HackFwd;3;15;6, 9, 11, 13, 19, 23, 28;2011;0;Germany
+311;High Line;5;29;4, 21;2011;0;USA
+312;HÖVDING;4;21;4, 6, 11, 16, 21;2011;1;Sweden
+313;Imagination Playground in a Box;4;21;11;2011;0;USA
+314;IVUHAP;5;29;5, 11, 26;2011;0;Denmark
+315;JANMA – The Clean Birth Kit;1;3;11, 15, 18;2011;0;India
+316;Konbit;5;31;5, 6, 11, 13, 15, 20;2011;0;USA
+317;Learning Landscape;4;20;13;2011;0;USA and Netherland
+318;Lifeplayer;5;31;6, 9, 11, 13, 15;2011;0;USA and South Africa
+319;Lulan Artisans Business Strategy;5;24;11, 13, 18, 19, 20, 22, 24;2011;0;USA
+320;Lung-on-a-Chip;1;3;3;2011;0;USA
+321;MycoBond™;2;8;3, 4, 11, 21, 25;2011;0;USA
+322;NETRA;1;3;6, 9, 11, 13, 15, 18;2011;0;Brazil, India and USA
+323;Novacem;2;8;4, 11, 13, 21;2011;0;UK
+324;OpenIDEO.com;5;31;4, 6, 9, 11, 13, 19, 28;2011;0;UK
+325;Plumen 001;2;11;4;2011;0;UK
+326;PUMA: Clever Little Bag;5;26;4, 13, 32;2011;0;Switzerland and USA
+327;Pure;2;9;4, 5, 10, 18;2011;0;UK
+328;Reclaim;5;31;13, 21;2011;0;Bahrain, Switzerland, Italy, Lebanon and USA
+329;Refugees United;5;31;5, 6, 9, 11, 13, 28;2011;0;Denmark
+330;Sana;4;20;3, 9, 13, 15, 18;2011;0;USA
+331;VERBIEN;1;3;11, 13, 15, 18;2011;1;Switzerland and USA
+332;she28;1;3;11, 13, 15, 20;2011;0;USA and Rwanda
+333;Shokay;3;15;11, 13, 15, 17, 18, 20, 24;2011;0;China and Hong Kong
+334;Solio;2;11;6, 11, 13, 15, 25;2011;0;UK
+335;T.27 City Car;5;30;4, 21, 25;2011;0;UK
+336;The Copenhagen Wheel;5;30;4, 6, 9, 11, 21, 25;2011;0;Australia, Italy, Israel and China
+337;The Dream Ball Project;4;21;5, 11, 12, 26;2011;0;Korea, Republic of
+338;The Secret Life Series;5;31;4, 6, 7,  11, 13, 17, 18, 28;2011;0;USA
+339;Tulip Siphon Water Filter;2;9;4, 5, 10, 11, 18;2011;0;Netherlands
+340;UN Global Compact Dilemma Game;4;20;4, 13;2011;0;Denmark and New Zealand
+341;WASARA;2;8;4, 11;2011;0;Japan
+342;WatAir;2;9;4, 5, 10, 11, 21;2011;0;Israel and the Netherlands
+343;X-halo;1;3;9, 11, 13;2011;0;Italy and the Netherlands
+344;Yuneec E430;5;30;4, 11, 13, 25;2011;0;China
+345;Raspberry Pi;4;19;6, 11, 15, 19;2013;1;UK
+346;Sanergy;2;8;11, 15, 21;2013;0;USA
+347;RECYCLE SUB-SAHARA;5;26;4, 11, 13, 15, 17, 20, 21;2013;0;UK
+348;Grundfos Lifelink;2;9;4, 6, 10, 15, 16;2013;0;Denmark
+349;Riders for Health;3;17;11, 13, 15;2013;0;UK
+350;Juhudi Kilimo;3;15;6, 11, 12, 13, 15, 20, 22, 24 ;2013;0;Kenya
+351;LiquiGlide;2;8;4, 11, 12;2013;0;USA
+352;Bespoke  Fairings;1;3;8, 9, 11, 19, 26;2013;0;USA
+353;SkinVision;1;3;6, 9, 11, 16;2013;0;Netherlands
+354;RecycleMatch;5;26;4, 6, 11, 13, 22, 32;2013;0;USA
+355;Google Glass;4;19;6, 9, 13, 16, 27, 28, 31;2013;0;USA
+356;Husk Power Systems;5;25;3, 4, 11, 15, 22, 25;2013;0;India
+357;LaXmi ;4;20;6, 11, 13, 15;2013;0;India
+358;The D-Process;2;7;4, 9, 11, 13, 19, 21;2013;0;USA/UK
+359;ecoATM;5;26;4, 6, 11, 13;2013;0;USA
+360;ABC’s;1;5;11, 15, 20;2013;0;UK
+361;ESOURCE;5;26;4, 11, 13, 15, 17;2013;0;UK
+362;The Nest Learning Thermostat;2;8;2, 4, 6, 9, 16;2013;0;USA
+363;Climate Adaptation Plan;5;25;4;2013;1;Denmark
+364;MONSTRUM’S IMAGINARY PLAYGROUNDS;4;21;11;2013;0;Denmark
+365;FILM FARMING WITH HYDROGEL;5;26;4, 10, 11, 12, 13, 21;2013;0;Japan
+366;Dyslexie;4;22;11, 18;2013;0;Netherlands
+367;LEPSIS;1;1;4, 11, 12, 13;2013;0;Sweden
+368;WikiCells ;1;1;3, 4, 11, 13;2013;0;USA
+369;MAMA;4;20;6, 11, 15;2013;0;Norway
+370;+Pool;5;25;4, 11;2013;0;USA
+371;FLOAT Beijing;5;26;4, 6, 11, 17, 19;2013;0;China
+372;The Ecological Urinal;2;8;15, 22;2013;0;Norway/Uganda
+373;GravityLight;2;11;11, 15, 20, 25;2013;0;UK
+374;TEDx;4;20;6, 9, 13, 28;2013;0;USA
+375;Open Source Ecology;5;31;6, 11, 13, 19, 30;2013;0;Poland
+376;Liter of Light;2;11;11, 15, 19, 20, 21;2013;0;Switzerland 
+377;Smart Highway;5;29;6, 11, 16;2013;1;Netherlands
+378;six free apps;5;32;4, 5, 6, 9, 16;2013;0;USA
+379;Attero Recycling;5;26;4, 9, 11, 13, 15, 17, 20;2013;0;India
+380;Tek RMD;1;3;11;2013;0;Turkey
+381;COURSERA;4;20;6, 9, 13;2013;0;USA
+382;d.light s1;2;11;11, 15, 21, 25;2013;0;India
+383;Skillshare ;4;20;6, 11, 19;2013;0;USA
+384;Beyond Meat™;1;1;4, 12, 13, 17;2013;0;USA
+385;Plan Verde;5;26;4, 13, 21;2013;0;Mexico
+386;Gram Power;5;25;11, 13, 14, 15, 16, 20, 25;2013;0;India
+387;M-PESA;3;3;6, 9, 11, 13, 15, 16, 17, 20, 22;2013;0;Kenya
+388;HALF THE SKY;4;20;6, 9, 11, 13;2013;0;USA
+389;Code for America;5;31;6, 7, 9, 11, 14, 18, 28;2013;0;USA
+390;CrowdFlower ;3;3;6, 9, 11, 13, 20, 22, 28;2013;0;USA
+391;Ekso™;1;3;11, 16, 27;2013;0;USA
+392;Getaround ;5;30;6, 9, 11, 13, 22, 28;2013;0;Canada
+393;Wilmington Robotic Exoskeleton;1;3;6, 9, 11, 13, 19;2013;0;USA
+394;Rabalder Parken;5;25;4, 11;2013;0;Denmark
+395;Drones+;5;31;7, 8, 9, 11, 13, 18, 26, 27, 28;2013;0;USA
+396;All Out;5;24;6, 7, 9, 11, 13, 18, 28;2013;0;Australia
+397;Lighting a Billion Lives (LaBL);2;11;4, 11, 13, 15, 18, 25 ;2013;0;India
+398;MAKERBOT REPLICATOR™ 2 DESKTOP 3D PRINTER;3;3;6, 9, 11, 13, 19;2013;0;USA
+399;FreshPaper;2;8;11, 12, 13, ;2013;1;USA
+400;AdaptAir;1;3;11, 13, 15, 18;2013;0;Argentina
+401;The Natalie Collection;1;5;13, 15, 18;2013;1;Norway
+402;Mine Kafon;5;32;5, 6, 11, 13, 26;2013;0;The Netherlands /Afghanistan
+403;Aki;4;20;11, 13, 15  ;2015;0;Norway
+404;Ambulance Drone;3;3;6, 11, 16, 27;2015;0;Netherlands
+405;Be My Eyes;1;3;6, 9, 11, 13, 16;2015;0;Denmark
+406;Better Shelter Housing Unit;2;7;4, 5, 10, 12, 26;2015;0;Sweden
+407;Bitcoin;3;14;6, 7, 8, 9, 11, 13, 16, 22;2015;0;Denmark
+408;Brck;5;31;6, 9, 11, 13;2015;0;Kenya
+409;Coco;3;17;11, 13, 32;2015;0;Colombia
+410;ColaLife;5;29;11, 13;2015;0;UK
+411;CrowdVoice;5;31;6, 7, 11, 13, 18, 28;2015;0;Bahrein/Mexico
+412;Desolenator;2;9;4, 5, 10, 11;2015;1;The Netherlands /UK
+413;Duolingo;4;20;6, 9, 11, 13, 15, 16, 20;2015;1;USA
+414;Embracing Life;1;3;11;2015;0;UK
+415;Flexible Space;2;7;11, 13, 19, 21;2015;0;Sweden
+416;Foldscope;4;20;6, 9, 11, 13, 15, 19;2015;0;USA
+417;Google Cardboard;4;19;6, 9, 11, 13, 19, 28;2015;0;USA
+418;Google Self Driving Car Project;5;30;2, 4, 6, 9, 16, 21, 22, 25, 27;2015;0;USA
+419;Groasis Waterboxx;5;25;4, 10, 11;2015;0;The Netherlands 
+420;Half The Sky Movement Game;4;19;7, 9, 11, 13, 15;2015;0;USA
+421;Hazmat Suit;3;17;11, 13;2015;0;USA
+422;IKO;1;3;6, 9, 11, 13,16, 19, 24;2015;0;Colombia
+423;Livelyhoods;3;15;4, 11, 13, 15, 20, 22;2015;0;USA
+424;Lumkani;2;13;6, 9, 11, 16, 21;2015;0;South Africa
+425;New Hope Ecotech;3;16;6,  11, 14, 20, 21, 32;2015;0;Brazil
+426;OkHi;2;2;6, 9, 11, 13, 15, 21;2015;0;Kenya
+427;Original Unverpackt;5;26;4, 11, 32 ;2015;0;Germany
+428;Peek Retina;1;3;6, 11, 15, 16;2015;1;UK
+429;Phonebloks;2;8;4, 6, 11, 17, 19, 22   ;2015;0;The Netherlands 
+430;Post-Tsunami Plan;5;26;4;2015;0;Chile
+431;Project Literacy;4;20;6, 13, 15, 18;2015;0;UK
+432;Quirky;3;14;6, 9, 11, 13, 17, 19, 22, 28;2015;0;USA
+433;Redesigning Breast Cancer Diagnostics;3;17;16;2015;0;Norway
+434;Scio;4;19;3, 6, 9, 11, 13, 16, 17, 31;2015;0;Israel
+435;Shower Of The Future;2;9;4, 10, 11, 21, 29;2015;0;Sweden
+436;Sky Urban Vertical Farming System;5;26;2, 4, 10, 11, 13, 21;2015;1;Singapore
+437;Smart Contact Lenses;1;3;3, 6, 9, 16;2015;0;USA
+438;Sokotext;3;3;6, 11, 15, 17, 22;2015;0;Colombia
+439;Solar Classroom In A Box;4;20;6, 9, 11, 13, 15, 18, 19, 25;2015;0;UK
+440;Tesla Powerwall;2;11;4, 16, 25;2015;1;USA
+441;The Divine Divas;4;20;15;2015;0;USA
+442;The Ocean Cleanup Array;5;26;4, 6, 11, 13, 17, 21, 30;2015;1;The Netherlands 
+443;The Silk Leaf;2;11;2, 4, 11, 13, 21, 29;2015;0;UK
+444;Thingiverse Groups;4;19;2, 6, 9, 11, 13, 16, 19, 22, 24;2015;0;USA
+445;Ventum;1;3;6, 11, 16;2015;0;Sweden/Ireland
+446;Wristify;1;4;4, 11, 31;2015;0;USA
+447;Yellowone Handsafe;3;17;11;2015;0;Denmark
+448;ZeroFly® Storage Bag;3;14;11, 12, 13;2015;0;Switzerland 

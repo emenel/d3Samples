@@ -1,0 +1,347 @@
+<!-- standard headers to identify the page on the web -->
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>This is the title of the tab</title>
+<!-- standard headers to identify the page on the web -->
+
+<!-- we are pulling in the local file for the d3 library. it is inside the libs folder and is a javascript file type. -->
+	<script type="text/javascript" src="libs/d3.js"></script>
+</head>
+
+<!-- we can put css here or in a separate file. best practice is to put it in a separate file but in this case we are being lazy. -->
+<style type="text/css">
+	/*some elements of your page are always recognizable by html, like svg or body or headers*/
+	svg{ 
+		background-color: "black";
+	}
+/*	if you want to style other elements using css, you have to specifically mark them as belonging to a class (for multiple elements - lots of blueberries!) or an ID (for unique elements - just one super special spot)*/
+	.labels{
+		font: Gotham;
+		size: 10pt;
+	}
+/*as you start working on your project, you will notice that some aspects are more easily done in HTML / CSS styling and some aspects need to be done directly in d3.js.*/
+	#container{
+		width:100%;
+		height:100%;
+	}
+</style>
+<!-- any html elements and javascript action needs to happen inside the body -->
+<!-- you can / should eventually make your css and javascript files separate from this main index file -->
+<!-- reminder: 
+html provides the basic skeleton for your page
+css is the way you style your page - think fonts, positioning, sizing of elements as well as shifts between various mouse states / hovers
+javascript is the way you give your page life and computation -->
+<body>
+
+<script type="text/javascript">
+// D3 code will go here
+
+var data = []; //setting up a variable that will catch the data coming in
+
+//LATER
+var allCat = []; var allChall = [];
+var maxCat, maxChall, minCat, minChall;
+
+d3.tsv("bigPic/Designs-Table 1 copy.tsv", function(d){
+	console.log(d[0]);
+	//this is standard javascript - let's loop through all of the rows
+	// for (i=0; i<d.length; i++){
+	// 	//and for each row, we will make our own custom formatted data organization
+	// 	data.push({
+	// 		year: parseInt(d[i]["Award year"]),
+	// 		catID: parseInt(d[i]["Category ID"]),
+	// 		chID: parseInt(d[i]["Challenge ID"]),
+	// 		cntry: (d[i]["Country of Design"]),
+	// 		driver: (d[i]["Driver of Change"]),
+	// 		id: parseInt(d[i]["ID"]),
+	// 		win: parseInt(d[i]["Is Winner? (1 | 0)"]),
+	// 		title: (d[i]["Name"]),
+	// 	})			
+		allCat.push(parseInt(d[i]["Category ID"]))
+		allChall.push(parseInt(d[i]["Challenge ID"]))
+	}
+	// makeCircs();
+})
+//for now, let's just make a nice big canvas
+//later we can change it and make it responsive
+var width = 1000; 
+var height = 700;
+
+var svg;
+svg = d3.select("body").append("svg")
+		.attr("width", w)
+		.attr("height", h)
+		.style("background-color","black")
+
+var circs;
+var leftMargin = 60;
+var xScale = d3.scale.linear()
+			.range([leftMargin, w-leftMargin]);
+
+var catScale = d3.scale.linear()
+			.range([leftMargin, w-leftMargin]);
+var challScale = d3.scale.linear()
+			.range([0, 255])
+
+var row = 0; 
+var enteringID;
+// Given a value in the input domain, returns the corresponding value in the output range. For example, to apply a color encoding:
+var color = d3.scaleQuantize()
+	.range([ "#ffffb2", "#fecc5c", "#fd8d3c", "#f03b20", "#bd0026" ]);
+    // .range(["brown", "steelblue"]);
+function makeCircs(){
+	xScale.domain([0, data.length])
+
+	maxChall = d3.max(allChall);
+	minChall = d3.min(allChall);
+	color.domain([minChall, maxChall])
+
+	circs = svg.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("class","circs")
+				.attr("transform", function(d,i){
+				    return "translate(" + (xScale(i)) + ", "+(h/2)+")";
+				})
+				.attr("cx", 0)
+				.attr("cy", 0)
+				.attr("r", 5)
+				.attr("fill", function(d,i){
+					return color(d.chID) //are a lot of similar challenges also in similar categories?
+					//quantize scale could work too
+				})
+				.attr("opacity", .1)
+				.attr("stroke","white");
+
+	maxCat = d3.max(allCat);
+	minCat = d3.min(allCat);
+	catScale.domain([minCat, maxCat])
+	circs
+		.on("click", function(d,i){
+			d3.selectAll(".circs")
+				.transition()
+				.duration(2000)
+				.attr("transform", function(d,i){
+				    return "translate(" + (catScale(d.catID)) + ", "+(h/2)+")";
+				})
+				//then move them to different x and y so they are spaced out
+		})
+}
+
+// Design_Trends-Table 1.tsv
+var trendData = [];
+var allTrends = [];
+var allProjs = [];
+d3.tsv("data1/Design_Trends-Table 1.tsv", function(d){
+	console.log(d[0]);
+	for (i=0; i<d.length; i++){
+		trendData.push({
+			trendID: parseInt(d[i]["ID_TREND"]),
+			designID: parseInt(d[i]["ID_DESIGN"]),
+		})		
+		allProjs.push(parseInt(d[i]["ID_DESIGN"]));
+		allTrends.push(parseInt(d[i]["ID_TREND"]));
+	}
+	// consolidateTrends();
+	trendCircles();
+})
+
+var trendCircs;
+var xScaleYears = d3.scale.linear()
+	.range([leftMargin, w-leftMargin]);
+var hMargin = 10;
+var yScaleTrends = d3.scale.linear()
+	.range([h-hMargin, hMargin])
+var maxProjs, maxTrends;
+
+function trendCircles(){
+
+	maxProjs = d3.max(allProjs);
+	maxTrends = d3.max(allTrends);
+
+	xScaleYears.domain([2005, 2017]);
+	yScaleTrends.domain([0, maxTrends]);
+
+	for (j=0; j<trendData.length; j++){
+		for (i=0; i<data.length; i++){
+			if(data[i].id==trendData[j].designID){
+				// console.log("yes")
+				trendData[j]=({
+					"trendID": trendData[j].trendID,
+					"designID": trendData[j].designID,
+					"year": data[i].year
+				})
+			}
+		}
+	}
+	trendCircs = svg.selectAll("circle")
+				.data(trendData)
+				.enter()
+				.append("circle")
+				.attr("class","trendC")
+				.attr("transform", function(d,i){
+					if(d.trendID==13){
+				    // return "translate(" + (w/2) + ", "+(h/2)+")";
+					    return "translate(" + (xScaleYears(d.year)) + ", "+(h/2)+")";	
+				    // return "translate(" + (xScaleYears(d.year)) + ", "+ (yScaleTrends(d.trendID)) +")";						
+					}
+				})
+				.attr("cy", 0)
+				.attr("r", 5)
+				.attr("fill", function(d,i){
+					return "pink";
+					// return color(d.chID) //are a lot of similar challenges also in similar categories?
+					//quantize scale could work too
+				})
+				.attr("opacity", 1)
+				.attr("stroke","white");
+var index = 0;
+	trendCircs
+		.on("click", function(d,i){
+			d3.selectAll(".trendC")
+				.transition()
+				.duration(2000)
+				.attr("cy", function(d,i){
+					if(d.trendID==13){
+						index++;
+						console.log(index);
+				    	return 5*index;
+				    }					
+				})
+		// console.log("yes")
+			  //  trendCircs.selectAll('.trendC')
+			  //     .data(function(d){
+			  //       return  d3.nest()
+			  //                 .key(function(d) { return d.trendID })
+			  //                 .entries(d);
+			  //     })
+			  //     .enter()
+			  //       .append('g')
+			  //       .attr("class", function(d){
+			  //       	return d.trendID
+			  //       })
+					// .attr("cx", function(d,i){
+					// 	console.log(d);
+					// 	return i*3;
+					// })
+
+			})
+				//then move them to different x and y so they are spaced out
+		
+}
+
+// var totalTrends = [];
+// function consolidateTrends(){
+//     for (i = 0; i<trendData.length; i++){
+//         totalTrends = keyConsolidation(trendData[i].trendID)
+//     }
+// }
+
+// function keyConsolidation(givenKey,i) {
+//     var total = 0;
+//     for (i = 0; i<trendData.length; i++){
+//         if(trendData[i].trendID == givenKey){
+//             total++;
+//         }
+//     }
+//      return total;
+// }
+
+	// trendCircs
+	// 	.on("click", function(d,i){
+	// 		d3.selectAll(".trendC")
+	// 			.transition()
+	// 			.duration(2000)
+	// 			.attr("transform", function(d,i){
+	// 			    return "translate(" + (xScaleYears(d.year)) + ", "+ (yScaleTrends(d.trendID)) +")";
+	// 			})
+	// 			//then move them to different x and y so they are spaced out
+	// 	})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //   var xOffset = 190; // the xoffset for each day 
+  //   var yOffset = 200; // the yoffset for each day
+    
+  //   // ids
+  //   var ids = svg.selectAll(".id")
+  //     .data(data); 
+
+  //   enteringID = ids.enter()
+  //     .append('g')
+  //     .classed('id', true)
+  //     .attr("transform", function(d,i){
+		// catScale.domain([0, d3.max(d.catID)])
+  //     	var whichCat = parseInt(d.catID);
+  //       return "translate(" + (whichCat * xOffset) + ", "+(h/2)+")";
+  //     })
+    // enteringID.append('text')
+    //   .text(function(d){ return d.catID })
+    //   .attr('x', 0)
+    //   .attr('y', 60)
+    //   .attr('text-anchor','middle')
+    //   .style('font-size','10px')
+    // // each day <g> contains several <g> elements that contain all the articles for that section
+    // enteringID.selectAll('.cat')
+    //   .data(function(d){
+    //     return  d3.nest()
+    //               .key(function(d) { return d.catID })
+    //               .entries(d);
+    //   })
+    //   .enter()
+    //     .append('g')
+    //     .classed('cat', true)
+    // //     //.classed('blog', function(d){ return d.key.indexOf('blog') > -1 ? true : false })
+    //     .attr('opacity','1')
+    //     .selectAll('.project_win')
+    //     .data(function(winners){
+    //       return  d3.nest()
+    //                 .key(function(d) { return (d.win ? 1 : 0) })
+    //                 .entries(winners);
+    //     })
+    //     .enter()
+    //       .append('g')
+    //       .classed('project_group', true)
+    //       .classed('win', function(d){ return d.key === 'win' ? 1 : 0 })
+    //         .selectAll('.project')
+    //         .data(function(proj){ return proj })
+    //         .enter()
+    //           .append('line')
+    //             .classed('project', true)
+    //             .attr('x1',function(d){ 
+    //             	return w/2;
+    //             	// return (Math.cos( thetaAxes[ d.id] ))  
+    //             })
+    //             .attr('y1',function(d){ 
+    //            		return h/2;
+    //             	// return (Math.sin( thetaAxes[ d.catID] ))  
+    //             })
+    //             // .attr("stroke", function(d){ return !d.win ? sectionColors[d.section].color : blogColor })
+    //             .attr('x2',function(d){ 
+    //             	return w/2;
+    //             	// return (Math.cos( thetaAxes[ d.id ])) * 10  
+    //             })
+    //             .attr('y2',function(d){ 
+    //             	return h/2;
+    //             	// return (Math.sin( thetaAxes[ d.id] )) * 10  
+    //             }) 
+    //             .attr("stroke","black")
+	</script>
+</body>
+</html>
