@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>LINKS</title>
-  <script src="libs/d3.v4.min.js"></script>
+  <script src="libs/d3.v3.js"></script>
+  <!-- <script src="libs/d3.v4.min.js"></script> -->
   <style type="text/css">
     text{
         font-family: "Courier"
@@ -38,7 +39,7 @@
     var uniqueMostKeyed;
 
     var links = [];
-    var nodes = [];
+    // var nodes = [];
 
 
     var width, height; 
@@ -60,9 +61,16 @@
             .attr("width", chartWidth)
             .attr("height", chartHeight)
             .attr("transform", "translate("+[margin.left, margin.top]+")")
-
+//simple data set
         var words = ["this is one","this is one this is another","this is one this is another this is more","this is one","this is one and another and another and another","this is one and another and another and another this is one and another and another and another"]; 
         main();
+
+//more complex data set
+    // var words = [];
+    // d3.csv("brexitTweets.csv", function(data, error){
+    //   words = data.columns;
+    //   console.log(data);
+    // })        
     function main() {
         for (var i = 0; i<words.length; i++){
           listWords[i]=words[i].split(" ");           
@@ -107,15 +115,16 @@
         next3();
       }
       function next3(){
+        links = [];
         for (i=0; i<words.length; i++){ 
             for (j=0; j<uniqueMostKeyed.length; j++){ 
                 if (listWords[i].indexOf(uniqueMostKeyed[j])!=-1){
                   links.push({"source":listWords[i],"target":uniqueMostKeyed[j]});
-                  nodes.push({"id":uniqueMostKeyed[j]}) 
+                  // nodes.push({"id":uniqueMostKeyed[j]}) 
                 }
             }
         }    
-        simpleNodes();        
+        // simpleNodes();        
       }
 
       function simpleNodes(){
@@ -159,14 +168,136 @@
           }
       }
 
+//d3 v3 version - may be better
+var path;
+var circle;
+var nodes = {};
+var radius = 5;
+function v3(){
+  console.log(links.length);
+  links.forEach(function(link) {
+     console.log(link.source+"source"+link.target+"target");
+    link.source = nodes[link.source] || (nodes[link.source] = {name: link.source });
+    link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+  });
 
-//more complex data set
-    // var words = [];
-    // d3.csv("brexitTweets.csv", function(data){
-    //   words = data.columns;
-    //   main();
-    // })
+  var force = d3.layout.force()
+      .nodes(d3.values(nodes))
+      .links(links)
+      .size([chartWidth, chartHeight])
+      .linkDistance(100)
+      .charge(-100)
+      .start()
+      .on("tick", function(){
+        tick();
+      })
 
+  var thisWeight = [];
+  var maxWeight;
+
+  path = chartLayer.selectAll("path")
+      .data(force.links())
+      .enter().append("path")
+      .attr("class",function(d,i){
+          return "link"+i;
+      }) 
+      .attr("stroke","grey")
+      .attr("opacity",1)
+      .attr("fill","none")
+
+  var rMap = d3.scale.linear();
+  var maxWeight;
+  var thisWeight = [];
+  var howLong = [];
+  var majorNodes = [];
+  circle = chartLayer.selectAll("node")
+      .data(force.nodes())
+      .enter().append("circle")
+      .attr("class",function(d,i){
+        if(d==undefined){
+          console.log("NONONON")
+        }
+        console.log(d);
+          howLong.push(d.name);
+          thisWeight.push(d.weight);
+          maxWeight = d3.max(thisWeight, function(d){ return d; })
+          rMap.domain([0,maxWeight])
+              .range([radius, radius*9])  
+          return "node"+i;
+      })  
+  circle
+      .attr("r", function(d,i){
+          return 5;
+      })
+      .attr("fill", function(d,i){
+          console.log(d.name);
+          for(j=0; j<uniqueMostKeyed.length; j++){
+             if(d.name==uniqueMostKeyed[j]){
+                  majorNodes.push(i);
+                  return "none";
+              }
+          }
+          return "pink";
+      })
+      .attr("stroke", function(d,i){
+          console.log(d.name);
+          for(j=0; j<uniqueMostKeyed.length; j++){
+             if(d.name==uniqueMostKeyed[j]){
+                  majorNodes.push(i);
+                  return "grey";
+              }
+          }
+          return "pink";
+      })
+  text= chartLayer.selectAll("labels")
+      .data(force.nodes())
+      .enter().append("text")
+      .attr("class","labels")
+      .attr("x", 8)
+      .attr("y", ".31em")
+      .text(function(d,i) {
+      if(howLong.length>1){
+          if(howLong[i][0].length==1){
+               return d.name;           
+          }        
+      } 
+      });
+
+  circle
+      .transition()
+      .duration(2000)
+      .attr("r", function(d,i){
+          if(howLong[i][0].length==1){
+              return rMap(d.weight);
+          }
+          return radius;
+      });
+  function tick() {
+    console.log("TICK")
+    path.attr("d", linkArc);
+    text.attr("transform", transform);
+    circle
+      .attr("transform", transform);
+  }
+
+  function transform(d) {
+    console.log(d);
+    console.log("transform");
+    if (d!=undefined){
+      d.x = Math.max(radius, Math.min(chartWidth - radius, d.x));
+      d.y = Math.max(radius, Math.min(chartHeight - radius, d.y));   
+      return "translate(" + d.x+ "," + d.y + ")";
+    } else{
+      console.log("no")
+    }
+  }
+  linkArc = function(d) {
+    var dx = d.target.x - d.source.x,
+        dy = d.target.y - d.source.y,
+        dr = Math.sqrt(dx * dx + dy * dy);
+    return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+  } 
+}
 
 </script>
 </body>

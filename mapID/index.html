@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/set2.css" />
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNZ19MF_z9i597nPeJmci8xsUiP4j17uo">
+		</script>
+  		<style>
+			.content h2 {
+				opacity: .9;
+				color: #00bdbd;
+			}
+			.main{
+				margin-left:50px;
+				margin-right:55px;
+				margin-top:50px;
+				margin-bottom:50px;
+				position: absolute;
+				left:0px;
+				top:0px;
+			}
+			text{
+				text-transform: uppercase;
+			    font-size: 10px;
+			    font-weight: 200;
+			}
+  		</style>
+	</head>
+	<body>
+		<div class="container">
+			<section class="content bgcolor-7">
+				<h2>This is where you are now</h2>
+				<span class="input input--nariko">
+					<input class="input__field input__field--nariko" type="text" id="input-20" />
+					<label class="input__label input__label--nariko" for="input-20">
+						<span class="input__label-content input__label-content--nariko">City, State, Country</span>
+					</label>
+				</span>
+			</section>
+		</div>
+		<div id="visualization">
+		</div>
+
+		<script src="js/classie.js"></script>
+		
+		<script>
+
+			d3.selectAll("span.input.input--nariko")
+				.style("opacity",0)
+
+			var current = [];
+			$.get("http://ipinfo.io", function(response) {
+				current = response;
+				d3.selectAll("label").text("For example: "+response.city+", "+response.country);
+				    console.log(current.city, current.country);
+				    current.latlng = response.loc.split(",")
+				currentChange();
+			}, "jsonp");	
+
+
+			function currentChange(){
+				changeLoc();
+			}
+
+
+
+			var inputElems = d3.selectAll("input");
+			var inputValue;
+			function inputChange() {
+			    inputValue = this.value;
+			    googleMap();
+			    // if      (inputValue === "width" ) { changeWidth();  }
+			    // else if (inputValue === "height") { changeHeight(); };
+			  // return location = this.value;   // ** Highlight this.value **
+			}
+			inputElems.on("change", inputChange);
+
+
+
+
+
+
+			var leftMargin = 60;
+			// var realWidth = window.innerWidth;
+			var width = window.innerWidth - leftMargin*2;
+			var height = window.innerHeight - leftMargin;
+			var svg;
+			svg = d3.select("body").append("svg").attr("class","main")
+					.attr("width", width)
+					.attr("height", height)
+			var rectSm = 10;
+			var rectLa = 100;
+			var rectData = [
+				{"x": width/2,   "y": 25,  "height": rectSm, "width": rectSm},
+			    {"x": width/2,  "y": 25, "height": rectSm, "width": rectSm},
+			];
+			var textData = [
+				{"x": width/2,   "y": 25},
+			    {"x": width/2,  "y": 25},
+			];
+			var texts = svg.selectAll("text").data(textData).enter().append("text")
+			    .attr("class", function(d, i) { 
+			    	return "text-" + i; 
+			    });
+			// texts
+			//     .attr("x",      function(d, i) { return d.x;         })
+			//     .attr("y",      function(d, i) { return d.y;         })
+
+			var rects = svg.selectAll("rect").data(rectData).enter().append("rect")
+			    .attr("class", function(d, i) { 
+			    	return "rect-" + i; 
+			    });
+			rects
+			    .attr("x",      function(d, i) { return d.x;         })
+			    .attr("y",      function(d, i) { return d.y;         })
+			    .attr("width",  function(d, i) { return d.width;     })
+			    .attr("height", function(d, i) { return d.height;    })
+
+			//used for x
+			var lngScale = d3.scaleLinear()
+				.domain([-180,180])
+				.range([leftMargin,width-leftMargin]);
+			//used for y
+			var latScale = d3.scaleLinear()
+				.domain([-90,90])
+				.range([height-leftMargin, leftMargin]);
+
+			// //used for x
+			var lngArea = d3.scaleLinear()
+				.domain([0,50])
+				.range([rectSm, rectLa]);
+			//used for y
+			var latArea = d3.scaleLinear()
+				.domain([0,50])
+				.range([rectSm, rectLa]);
+
+
+			function changeLoc(){
+				console.log("hey0")
+				d3.selectAll(".rect-0")
+					.transition()
+					    .duration(3000)
+					    .attr("x", lngScale(parseInt(current.latlng[1])))
+					.transition()
+					    .duration(3000)
+					    .attr("y", latScale(parseInt(current.latlng[0])))
+					    .attr("stroke","pink")
+				d3.selectAll(".text-0")
+					.transition()
+					.delay(6000)
+					.text(current.city+", "+current.country)
+					    .attr("x", lngScale(parseInt(current.latlng[1])))
+					    .attr("y", latScale(parseInt(current.latlng[0])))
+				d3.selectAll("span.input.input--nariko")
+					.transition()
+					.delay(7000)
+					.style("opacity",1)
+				d3.select("h2")
+					.transition()
+					.delay(7000)
+					.text("But where are you from?")
+
+			}
+
+			function changeWidth() {
+				rects
+				    .transition()
+				        .duration(3000)
+				        .attr("width", "300")
+				    .transition()
+				        .duration(3000)
+				        .attr("width", "50");
+			};
+			function changeHeight() {
+			    rects
+			        .transition()
+			            .duration(3000)
+			            .attr("height", "300")
+			        .transition()
+			            .duration(3000)
+			            .attr("height", "50");
+			}
+			var map;
+			var Geocoder = new google.maps.Geocoder();
+			var locResults = [];
+			var spot = [];
+			function googleMap(){
+			    var request = {
+			        address: inputValue
+			    };
+			    Geocoder.geocode(request, function(results, status) {
+			        if (status == google.maps.GeocoderStatus.OK) {
+
+			            locResults.push(results[0]);
+
+			            spot.push({
+							minLat: locResults[0].geometry.bounds["f"]["f"],
+			            	maxLat: locResults[0].geometry.bounds["f"]["b"],            
+			            	minLon: locResults[0].geometry.bounds["b"]["b"],
+			            	maxLon: locResults[0].geometry.bounds["b"]["f"],
+			            })
+
+			            drawOtherSpot();
+			        }
+			    });
+			}
+
+			var t = d3.transition()
+			    .duration(3000);
+			    
+			function drawOtherSpot(){
+				console.log("hey1")
+				d3.selectAll(".rect-1")
+					.transition().duration(3000)
+				    .attr("x", lngScale(spot[0].minLon))
+					.transition().duration(3000)
+					.attr("y", latScale(spot[0].minLat))
+					.transition().duration(3000)
+					.attr("height", latArea(Math.abs(spot[0].maxLat-spot[0].minLat)))
+					.transition().duration(3000)
+					.attr("width", lngArea(Math.abs(spot[0].maxLon-spot[0].minLon)))
+			}
+
+
+
+
+
+
+
+			(function() {
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+		</script>
+	</body>
+</html>
