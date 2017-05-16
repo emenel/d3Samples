@@ -12,26 +12,29 @@ we are using the v4 of d3 - this is the latest developed version with all the be
 - that's all noted here: https://github.com/d3/d3/blob/master/CHANGES.md
 the "min" part of the file name just means that the file has been reduced to its most compact version - this will load faster than a version with lots of white space, comments and spaces
 -->
+
+<!-- we can put css here or in a separate file. best practice is to put it in a separate file but in this case we are being lazy. -->
+	<style type="text/css">
+		/*some elements of your page are always recognizable by html, like svg or body or headers*/
+		svg{ 
+		}
+	/*	if you want to style other elements using css, you have to specifically mark them as belonging to a class (for multiple elements - lots of blueberries!) or an ID (for unique elements - just one super special spot)*/
+		.labels{
+			font: Gotham;
+			size: 10pt;
+		}
+	/*as you start working on your project, you will notice that some aspects are more easily done in HTML / CSS styling and some aspects need to be done directly in d3.js.*/
+		#vizContainer{
+	/*		width:100%;
+			height:100%;*/
+		}
+		body{
+			/*background-color: black;*/
+		}
+	</style>
 	<script type="text/javascript" src="libs/d3.v4.min.js"></script>
 </head>
 
-<!-- we can put css here or in a separate file. best practice is to put it in a separate file but in this case we are being lazy. -->
-<style type="text/css">
-	/*some elements of your page are always recognizable by html, like svg or body or headers*/
-	svg{ 
-		background-color: "black";
-	}
-/*	if you want to style other elements using css, you have to specifically mark them as belonging to a class (for multiple elements - lots of blueberries!) or an ID (for unique elements - just one super special spot)*/
-	.labels{
-		font: Gotham;
-		size: 10pt;
-	}
-/*as you start working on your project, you will notice that some aspects are more easily done in HTML / CSS styling and some aspects need to be done directly in d3.js.*/
-	#container{
-		width:100%;
-		height:100%;
-	}
-</style>
 <!-- any html elements and javascript action needs to happen inside the body -->
 <!-- you can / should eventually make your css and javascript files separate from this main index file -->
 <!-- reminder: 
@@ -42,6 +45,7 @@ javascript is the way you give your page life and computation -->
 
 <!-- here we are putting one empty vizContainer -->
 <div id = "vizContainer"></div>
+<div class = "thisClass"></div>
 <!-- later in our javascript, we will selected it by its unique name - #vizContainer - and add our canvas and visualisation elements to it -->
 
 <script type="text/javascript">
@@ -54,14 +58,37 @@ var data = [1, 2, 7, 5];
 // -----------PART 2: SETTING UP THE CANVAS-----------
 //we declare that we will have a special variable named svgCanvas - or whatever we want to call it, where we will attach the canvas
 var svgCanvas;
-//ok, now we actually select the part of the html document where we would like this canvas to be attached to
-svgCanvas = d3.select("#vizContainer").append("svg") //specifically, we are appending an svg to the vizContainer - a unique div we made in the html
-		.attr("width", 800) //we decide how wide the canvas is 
-		.attr("height", 600); //we decide how tall the canvas is 
+var width = 800;
+var height = 600;
+//ok, now we actually select the part of the html document where we would like this canvas to be attached to 
+svgCanvas = d3.select("#vizContainer").append("svg")
+				.attr("width", width)
+				.attr("height", height); //we decide how tall the canvas is 
 //a note on semicolons: in d3.js, a semi-colon indicates that  you are done creating this element
-
-
-
+console.log(data);
+// svgCanvas.selectAll(".circ")
+// 	.enter(data)
+// 	.append("circle")
+// 	.attr("class", "circ")
+// 	.attr("cx", function(d,i){
+// 		return i*5;
+// 	})
+// 	.attr("cy", 80)
+// 	.attr("r", 100)
+// 	.attr("fill","blue");
+	
+	var circs = svgCanvas.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("class","circs")
+				.attr("cx", function(d,i){
+					return 50+i*10
+				})
+				.attr("cy", 100)
+				.attr("r", 5)
+				.attr("opacity", .1)
+				.attr("stroke","white");
 // -----------PART 3: DRAWING ON THE CANVAS-----------
 
 
