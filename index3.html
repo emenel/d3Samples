@@ -1,5 +1,5 @@
 <!-- standard headers to identify the page on the web -->
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -7,13 +7,13 @@
 <!-- standard headers to identify the page on the web -->
 
 <!-- we are pulling in the local file for the d3 library. it is inside the libs folder and is a javascript file type. -->
-	<script type="text/javascript" src="libs/d3.js"></script>
+	<script type="text/javascript" src="libs/d3.v3.js"></script>
 </head>
 
 <!-- we can put css here or in a separate file. best practice is to put it in a separate file but in this case we are being lazy. -->
 <style type="text/css">
 	/*some elements of your page are always recognizable by html, like svg or body or headers*/
-	svg{ 
+	svg{
 		background-color: "black";
 	}
 /*	if you want to style other elements using css, you have to specifically mark them as belonging to a class (for multiple elements - lots of blueberries!) or an ID (for unique elements - just one super special spot)*/
@@ -29,7 +29,7 @@
 </style>
 <!-- any html elements and javascript action needs to happen inside the body -->
 <!-- you can / should eventually make your css and javascript files separate from this main index file -->
-<!-- reminder: 
+<!-- reminder:
 html provides the basic skeleton for your page
 css is the way you style your page - think fonts, positioning, sizing of elements as well as shifts between various mouse states / hovers
 javascript is the way you give your page life and computation -->
@@ -44,7 +44,7 @@ var data = []; //setting up a variable that will catch the data coming in
 var allCat = []; var allChall = [];
 var maxCat, maxChall, minCat, minChall;
 
-d3.tsv("bigPic/Designs-Table 1 copy.tsv", function(d){
+d3.tsv("data/Designs-Table 1 copy.tsv", function(d)	{
 	console.log(d[0]);
 	//this is standard javascript - let's loop through all of the rows
 	// for (i=0; i<d.length; i++){
@@ -58,15 +58,15 @@ d3.tsv("bigPic/Designs-Table 1 copy.tsv", function(d){
 	// 		id: parseInt(d[i]["ID"]),
 	// 		win: parseInt(d[i]["Is Winner? (1 | 0)"]),
 	// 		title: (d[i]["Name"]),
-	// 	})			
+	// 	})
 		allCat.push(parseInt(d[i]["Category ID"]))
 		allChall.push(parseInt(d[i]["Challenge ID"]))
-	}
+	
 	// makeCircs();
 })
 //for now, let's just make a nice big canvas
 //later we can change it and make it responsive
-var width = 1000; 
+var width = 1000;
 var height = 700;
 
 var svg;
@@ -85,7 +85,7 @@ var catScale = d3.scale.linear()
 var challScale = d3.scale.linear()
 			.range([0, 255])
 
-var row = 0; 
+var row = 0;
 var enteringID;
 // Given a value in the input domain, returns the corresponding value in the output range. For example, to apply a color encoding:
 var color = d3.scaleQuantize()
@@ -141,7 +141,7 @@ d3.tsv("data1/Design_Trends-Table 1.tsv", function(d){
 		trendData.push({
 			trendID: parseInt(d[i]["ID_TREND"]),
 			designID: parseInt(d[i]["ID_DESIGN"]),
-		})		
+		})
 		allProjs.push(parseInt(d[i]["ID_DESIGN"]));
 		allTrends.push(parseInt(d[i]["ID_TREND"]));
 	}
@@ -185,8 +185,8 @@ function trendCircles(){
 				.attr("transform", function(d,i){
 					if(d.trendID==13){
 				    // return "translate(" + (w/2) + ", "+(h/2)+")";
-					    return "translate(" + (xScaleYears(d.year)) + ", "+(h/2)+")";	
-				    // return "translate(" + (xScaleYears(d.year)) + ", "+ (yScaleTrends(d.trendID)) +")";						
+					    return "translate(" + (xScaleYears(d.year)) + ", "+(h/2)+")";
+				    // return "translate(" + (xScaleYears(d.year)) + ", "+ (yScaleTrends(d.trendID)) +")";
 					}
 				})
 				.attr("cy", 0)
@@ -209,7 +209,7 @@ var index = 0;
 						index++;
 						console.log(index);
 				    	return 5*index;
-				    }					
+				    }
 				})
 		// console.log("yes")
 			  //  trendCircs.selectAll('.trendC')
@@ -230,7 +230,7 @@ var index = 0;
 
 			})
 				//then move them to different x and y so they are spaced out
-		
+
 }
 
 // var totalTrends = [];
@@ -276,12 +276,12 @@ var index = 0;
 
 
 
-  //   var xOffset = 190; // the xoffset for each day 
+  //   var xOffset = 190; // the xoffset for each day
   //   var yOffset = 200; // the yoffset for each day
-    
+
   //   // ids
   //   var ids = svg.selectAll(".id")
-  //     .data(data); 
+  //     .data(data);
 
   //   enteringID = ids.enter()
   //     .append('g')
@@ -324,23 +324,23 @@ var index = 0;
     //         .enter()
     //           .append('line')
     //             .classed('project', true)
-    //             .attr('x1',function(d){ 
+    //             .attr('x1',function(d){
     //             	return w/2;
-    //             	// return (Math.cos( thetaAxes[ d.id] ))  
+    //             	// return (Math.cos( thetaAxes[ d.id] ))
     //             })
-    //             .attr('y1',function(d){ 
+    //             .attr('y1',function(d){
     //            		return h/2;
-    //             	// return (Math.sin( thetaAxes[ d.catID] ))  
+    //             	// return (Math.sin( thetaAxes[ d.catID] ))
     //             })
     //             // .attr("stroke", function(d){ return !d.win ? sectionColors[d.section].color : blogColor })
-    //             .attr('x2',function(d){ 
+    //             .attr('x2',function(d){
     //             	return w/2;
-    //             	// return (Math.cos( thetaAxes[ d.id ])) * 10  
+    //             	// return (Math.cos( thetaAxes[ d.id ])) * 10
     //             })
-    //             .attr('y2',function(d){ 
+    //             .attr('y2',function(d){
     //             	return h/2;
-    //             	// return (Math.sin( thetaAxes[ d.id] )) * 10  
-    //             }) 
+    //             	// return (Math.sin( thetaAxes[ d.id] )) * 10
+    //             })
     //             .attr("stroke","black")
 	</script>
 </body>
