@@ -26,9 +26,9 @@
   </style>
 </head>
 <body>
-  <div id="graph"></div>    
+  <div id="graph"></div>
   <script type="text/javascript">
-    
+
     //preparing our data in a nice format for a nodes and links visualisation
     var allWords = [];
     var listWords = [];
@@ -42,19 +42,19 @@
     // var nodes = [];
 
 
-    var width, height; 
-    var chartWidth, chartHeight; 
-    var margin; 
+    var width, height;
+    var chartWidth, chartHeight;
+    var margin;
     var svg = d3.select("#graph").append("svg");
     var chartLayer = svg.append("g").classed("chartLayer", true);
         width = document.querySelector("#graph").clientWidth
         height = document.querySelector("#graph").clientHeight
-    
+
         margin = {top:10, left:10, bottom:10, right:10 }
-        
+
         chartWidth = width - (margin.left+margin.right)
         chartHeight = height - (margin.top+margin.bottom)
-        
+
         svg.attr("width", width).attr("height", height)
 
         chartLayer
@@ -62,22 +62,22 @@
             .attr("height", chartHeight)
             .attr("transform", "translate("+[margin.left, margin.top]+")")
 //simple data set
-        var words = ["this is one","this is one this is another","this is one this is another this is more","this is one","this is one and another and another and another","this is one and another and another and another this is one and another and another and another"]; 
+        var words = ["this is one","this is one this is another","this is one this is another this is more","this is one","this is one and another and another and another","this is one and another and another and another this is one and another and another and another"];
         main();
 
 //more complex data set
-    // var words = [];
-    // d3.csv("brexitTweets.csv", function(data, error){
-    //   words = data.columns;
-    //   console.log(data);
-    // })        
+    var words = [];
+    d3.csv("data/brexitTweets.csv", function(data, error){
+      words = data.columns;
+      console.log(data);
+    })
     function main() {
         for (var i = 0; i<words.length; i++){
-          listWords[i]=words[i].split(" ");           
+          listWords[i]=words[i].split(" ");
 
           //then let's put all the words used in a long array
           for (j=0; j<listWords[i].length; j++){
-            allWords.push(listWords[i][j]);   
+            allWords.push(listWords[i][j]);
           }
           //then let's find the most used words from this long array
         }
@@ -86,27 +86,27 @@
     var uniqueKeywords;
     function next(){
       //here we will find out which words are unique from the long list
-      uniqueKeywords = allWords.filter( onlyUnique ); 
+      uniqueKeywords = allWords.filter( onlyUnique );
       next2();
     }
-    function onlyUnique(value, index, self) { 
+    function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
-    } 
-    function keyConsolidation(givenKey,i) { 
+    }
+    function keyConsolidation(givenKey,i) {
         var total = 0;
-        for (i = 0; i<allWords.length; i++){ 
+        for (i = 0; i<allWords.length; i++){
             if(allWords[i] == givenKey){
                 total++;
             }else{
             }
         }
         return total;
-     } 
+     }
 
       function next2(){
         for (i = 0; i<allWords.length; i++){
-          totalKeywords[i] = keyConsolidation(allWords[i]); //this counts the number of times the words are used 
-          var mostKeyed = d3.max(totalKeywords); //what is the highest number of times a word has been used?    
+          totalKeywords[i] = keyConsolidation(allWords[i]); //this counts the number of times the words are used
+          var mostKeyed = d3.max(totalKeywords); //what is the highest number of times a word has been used?
           if(totalKeywords[i]>mostKeyed*filterNum){ //so if a word has been used a LOT - but still relative to the amount other words have been used, put it in the "focused keywords" array
             focusKeywords.push(allWords[i]);
           }
@@ -116,15 +116,15 @@
       }
       function next3(){
         links = [];
-        for (i=0; i<words.length; i++){ 
-            for (j=0; j<uniqueMostKeyed.length; j++){ 
+        for (i=0; i<words.length; i++){
+            for (j=0; j<uniqueMostKeyed.length; j++){
                 if (listWords[i].indexOf(uniqueMostKeyed[j])!=-1){
                   links.push({"source":listWords[i],"target":uniqueMostKeyed[j]});
-                  // nodes.push({"id":uniqueMostKeyed[j]}) 
+                  // nodes.push({"id":uniqueMostKeyed[j]})
                 }
             }
-        }    
-        // simpleNodes();        
+        }
+        // simpleNodes();
       }
 
       function simpleNodes(){
@@ -137,7 +137,7 @@
           .on("tick", ticked);
 
         var link = chartLayer.selectAll(".link"),
-            node = chartLayer.selectAll(".node"); 
+            node = chartLayer.selectAll(".node");
 
             simulation.nodes(nodes);
             simulation.force("link").links(links);
@@ -156,7 +156,7 @@
                 .attr("class", function(d){
                   return d.id;
                 })
-     
+
           function ticked() {
             link.attr("x1", function(d) { return d.source.x; })
                 .attr("y1", function(d) { return d.source.y; })
@@ -200,7 +200,7 @@ function v3(){
       .enter().append("path")
       .attr("class",function(d,i){
           return "link"+i;
-      }) 
+      })
       .attr("stroke","grey")
       .attr("opacity",1)
       .attr("fill","none")
@@ -222,9 +222,9 @@ function v3(){
           thisWeight.push(d.weight);
           maxWeight = d3.max(thisWeight, function(d){ return d; })
           rMap.domain([0,maxWeight])
-              .range([radius, radius*9])  
+              .range([radius, radius*9])
           return "node"+i;
-      })  
+      })
   circle
       .attr("r", function(d,i){
           return 5;
@@ -258,9 +258,9 @@ function v3(){
       .text(function(d,i) {
       if(howLong.length>1){
           if(howLong[i][0].length==1){
-               return d.name;           
-          }        
-      } 
+               return d.name;
+          }
+      }
       });
 
   circle
@@ -285,7 +285,7 @@ function v3(){
     console.log("transform");
     if (d!=undefined){
       d.x = Math.max(radius, Math.min(chartWidth - radius, d.x));
-      d.y = Math.max(radius, Math.min(chartHeight - radius, d.y));   
+      d.y = Math.max(radius, Math.min(chartHeight - radius, d.y));
       return "translate(" + d.x+ "," + d.y + ")";
     } else{
       console.log("no")
@@ -296,7 +296,7 @@ function v3(){
         dy = d.target.y - d.source.y,
         dr = Math.sqrt(dx * dx + dy * dy);
     return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
-  } 
+  }
 }
 
 </script>
