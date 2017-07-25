@@ -41,7 +41,7 @@ javascript is the way you give your page life and computation -->
 <body>
 
 <!-- here we are putting one empty vizContainer -->
-<div id = "vizContainer"></div>
+<div id="vizContainer"></div>
 <!-- later in our javascript, we will selected it by its unique name - #vizContainer - and add our canvas and visualisation elements to it -->
 
 <script type="text/javascript">
@@ -49,31 +49,13 @@ javascript is the way you give your page life and computation -->
 
 // -----------PART 1: BRINGING IN THE DATA-----------
 
-//this data is formatted in a tsv (tab separated values) so we use the d3.tsv function to bring it in
-//if it were a csv file we would use d3.csv, etc
-//this is all in the d3 reference
-//reminder: this is a function, so anything we do in here is only seen by anything inside of here :)
-d3.tsv("bigPic/Designs-Table 1 copy.tsv", function(myData){
-	console.log(myData); //let's find out - what does this data look like when we bring it?
-//go to view -> developer -> javascript console
-//you will see a lot of "objects"
-//if you click the carrot, you will see a list of objects
-//this has each one of your data entries
-
-//so if we just want to access the first entry in the data, what do we do?
-	console.log(myData[0]); //how could we get inside of one entry?
-//see that it shows up and on the right side of the log, you see from which line this item is coming?
+var myData = [1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0];
 
 
-//what if we want to access the year for this first piece of data?
-	console.log(myData[0]["Award year"]);
-//can you access a different kind of data about the first piece of data?
 
 
-//what if we want to save just this piece of data?
-	var oneYear = myData[0]["Award year"];
-//will this be accessible to the other parts of the script? (no, so... it needs to be a global variable - existing outside of a function)
-}) //end of function that brings in our dataset as "my data"
+
+
 
 
 
@@ -81,14 +63,37 @@ d3.tsv("bigPic/Designs-Table 1 copy.tsv", function(myData){
 //we declare that we will have a special variable named svgCanvas - or whatever we want to call it, where we will attach the canvas
 var svgCanvas;
 //ok, now we actually select the part of the html document where we would like this canvas to be attached to
-svgCanvas = d3.select("#vizContainer").append("svg") //specifically, we are appending an svg to the vizContainer - a unique div we made in the html
-		.attr("width", 800) //we decide how wide the canvas is
+svgCanvas = d3.select("#vizContainer").append("svg")
+		.attr("width", 1500) //we decide how wide the canvas is
 		.attr("height", 600); //we decide how tall the canvas is
 //a note on semicolons: in d3.js, a semi-colon indicates that  you are done creating this element
 
-
-
 // -----------PART 3: DRAWING ON THE CANVAS-----------
+
+var xPos = 100;
+
+var circles = svgCanvas.selectAll("circle")
+	.data(myData)
+	.enter()
+	.append("circle")
+	.attr("r", 25)
+	.attr("cx", function(d, i){
+		return i * xPos + xPos;
+	})
+	.attr("cy", 50)
+	.attr("fill", function(d, i){
+		var c;
+		if (d == 1) {
+			// filled
+			c = "black";
+		}	else {
+			// not filled
+			c = "white";
+		}
+		return c;
+	})
+	.attr("stroke", "red");
+
 
 	</script>
 </body>

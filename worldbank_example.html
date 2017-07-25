@@ -22,7 +22,7 @@
 
 		var data = "data/forestArea.csv";
 
-		d3.csv(data, function(err, forestData) {
+    function parseData(dataset) {
 
       var countriesData = d3.nest()
         .key(function(d){
@@ -50,7 +50,15 @@
             'meta': meta
           }
         })
-        .entries(forestData);
+        .entries(dataset);
+
+      return countriesData;
+    }
+
+
+		d3.csv(data, function(err, forestData) {
+
+      var countriesData = parseData(forestData);
 
         //console.log(countriesData);
 
