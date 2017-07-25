@@ -15,12 +15,13 @@
 
     var width = 1200;
     var height = 800;
-    var min;
-    var max;
+    var firstYear;
+    var lastYear;
+
+    var maxValue = 0;
+    var minValue = 0;
 
     var svg = d3.select("body").append("svg")
-
-		var data = "data/forestArea.csv";
 
     function parseData(dataset) {
 
@@ -42,8 +43,22 @@
             }
           }
 
-          min = d3.min(years.keys());
-          max = d3.max(years.keys());
+          firstYear = parseInt(d3.min(years.keys()));
+          lastYear = parseInt(d3.max(years.keys()));
+
+          //console.log(years);
+
+          if (maxValue < d3.max(years.values())) {
+            maxValue = d3.max(years.values(), function(d){
+              return parseInt(d);
+            });
+          }
+
+          if (minValue > d3.min(years.values())) {
+            minValue = d3.min(years.values(),function(d){
+              return parseInt(d);
+            });
+          }
 
           return {
             'years': years,
@@ -56,49 +71,70 @@
     }
 
 
-		d3.csv(data, function(err, forestData) {
+		d3.csv("data/accessToElectricity.csv", function(err, electricData) {
 
-      var countriesData = parseData(forestData);
+      var countriesData = parseData(electricData);
+
+      var rScale = d3.scaleLinear()
+        .domain([minValue, maxValue])
+        .range([10, 100])
+
+      var countries = svg.selectAll(".countries")
+        .data(countriesData)
+        .enter()
+          .append("g")
+            .attr("id", function(d, i) {
+              return d.value.years.get("CountryName");
+            })
+            .append("circle")
+            .attr("r", function(d, i){
+              return rScale(d.value.years.get("1997"))
+            })
+            .attr("cx", function(d, i){
+              return i * 100 + 100
+            })
+            .attr("cy", 50)
+            .attr("opacity", 0.1)
+    });
+
 
         //console.log(countriesData);
 
-      var xScale = d3.scaleLinear()
-        .domain([parseInt(min), parseInt(max)])
-        .range([0, width-10]);
-
-      var yScale = d3.scaleLinear()
-        .domain([min, max])
-        .range([0, height])
-
-      // console.log(countriesData);
-
-      svg.selectAll('.countries')
-        .data(countriesData)
-        .enter().append('g')
-          .attr('id', function(d){
-            return d.key;
-          })
-        .selectAll('.country')
-          .data(function(d){
-            var inc = d3.map();
-            d.value.years.each(function(v,k){
-              if (v) { inc.set(k,v); }
-            });
-            return inc.entries();
-          })
-          .enter().append('circle')
-            .attr('cx', function(d,i){
-              // console.log(parseInt(d.key));
-              return xScale(d.key)
-            })
-            .attr('cy', 200)
-            .attr('r', function(d){
-              return (d.value/100000)/4
-            })
-            .attr('class', function(d){ return d.key })
-            .style('fill-opacity', 0.1)
-
-		});
+      // var xScale = d3.scaleLinear()
+      //   .domain([firstYear, lastYear])
+      //   .range([0, width-10]);
+      //
+      // var yScale = d3.scaleLinear()
+      //   .domain([firstYear, lastYear])
+      //   .range([0, height])
+      //
+      // // console.log(countriesData);
+      //
+      // svg.selectAll('.countries')
+      //   .data(countriesData)
+      //   .enter().append('g')
+      //     .attr('id', function(d){
+      //       return d.key;
+      //     })
+      //   .selectAll('.country')
+      //     .data(function(d){
+      //       var inc = d3.map();
+      //       d.value.years.each(function(v,k){
+      //         if (v) { inc.set(k,v); }
+      //       });
+      //       return inc.entries();
+      //     })
+      //     .enter().append('circle')
+      //       .attr('cx', function(d,i){
+      //         // console.log(parseInt(d.key));
+      //         return xScale(d.key)
+      //       })
+      //       .attr('cy', 200)
+      //       .attr('r', function(d){
+      //         return (d.value/100000)/4
+      //       })
+      //       .attr('class', function(d){ return d.key })
+      //       .style('fill-opacity', 0.1)
 
   </script>
 </body>
