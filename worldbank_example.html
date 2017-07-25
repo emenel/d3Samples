@@ -79,6 +79,10 @@
         .domain([minValue, maxValue])
         .range([10, 100])
 
+      var xScale = d3.scaleLinear()
+        .domain([0, electricData.length])
+        .range([100, width-100]);
+
       var countries = svg.selectAll(".countries")
         .data(countriesData)
         .enter()
@@ -91,7 +95,7 @@
               return rScale(d.value.years.get("1997"))
             })
             .attr("cx", function(d, i){
-              return i * 100 + 100
+              return xScale(i);
             })
             .attr("cy", 50)
             .attr("opacity", 0.1)
@@ -100,9 +104,7 @@
 
         //console.log(countriesData);
 
-      // var xScale = d3.scaleLinear()
-      //   .domain([firstYear, lastYear])
-      //   .range([0, width-10]);
+
       //
       // var yScale = d3.scaleLinear()
       //   .domain([firstYear, lastYear])
