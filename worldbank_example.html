@@ -83,6 +83,10 @@
         .domain([0, electricData.length])
         .range([100, width-100]);
 
+      var xYscale = d3.scaleLinear()
+        .domain([minValue, maxValue])
+        .range([0, 600]);
+
       var countries = svg.selectAll(".countries")
         .data(countriesData)
         .enter()
